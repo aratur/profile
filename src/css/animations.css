@@ -5,7 +5,7 @@
 @media (prefers-reduced-motion: reduce) {
   .frontend::after,
   .profile-photo svg:hover {
-    animation: none;
+    animation: none !important;
   }
 }
 

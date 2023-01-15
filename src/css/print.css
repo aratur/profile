@@ -1,0 +1,36 @@
+/* ------------------- */
+/* Printing properties */
+/* ------------------- */
+
+/* use scale 65% in Chrome */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* e.g. will not break in a middle of experience block */
+  section {
+    page-break-inside: avoid;
+  }
+
+  /** Setting margins */
+  @page {
+    margin: 2cm;
+  }
+
+  /* Or: */
+  @page :left {
+    margin: 1cm;
+  }
+
+  @page :right {
+    margin: 1cm;
+  }
+
+  /* remove  */
+  .name-text-color {
+    text-shadow: none;
+    color: inherit;
+  }
+}

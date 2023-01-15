@@ -14,6 +14,8 @@
   --fnt-header: 'Teko', sans-serif;
   --width-body: min(95vw, 1200px);
   --width-sidebar: 350px;
+  --width-header-background: 15rem;
+  --width-table-header: 115px;
 }
 
 /* define baseline attributes of the page */
@@ -51,7 +53,7 @@ header {
   inset: 4rem 0 0 0;
   background-color: var(--clr-header-bar-background);
   z-index: -200;
-  height: 15rem;
+  height: var(--width-header-background);
   width: 100vw;
 }
 
@@ -83,11 +85,11 @@ header {
 /* --------------------------- */
 .profile-photo svg {
   position: absolute;
-  inset: -20px 0 0 -20px;
-  width: 280px;
+  inset: calc(0px - var(--width-border)) 0 0 calc(0px - var(--width-border));
+  width: var(--width-photo);
   aspect-ratio: 1 / 1;
   fill: transparent;
-  stroke-width: 8px;
+  stroke-width: calc(var(--width-border) / 2);
   border-radius: 20rem;
   stroke: var(--clr-accent);
   rotate: 180deg;
@@ -127,6 +129,11 @@ h1 {
   color: var(--clr-darker-blue);
 }
 
+.name-text-color {
+  color: var(--clr-accent);
+  text-shadow: 0.05em 0.05em var(--clr-darker-blue);
+}
+
 /* underline for headers h2 */
 h2 {
   position: relative;
@@ -159,7 +166,7 @@ table th {
   text-align: left;
   padding-right: 0.5em;
   font-weight: bold;
-  width: 115px;
+  width: var(--width-table-header);
 }
 
 header,
@@ -228,6 +235,10 @@ main {
   grid-area: skills;
 }
 
+.no-linebreak {
+  white-space: nowrap;
+}
+
 @media screen and (max-width: 950px) {
   /* shift page elements into new slots */
   main {
@@ -283,14 +294,5 @@ main {
   body {
     min-width: 375px;
     overflow: auto;
-  }
-}
-
-/* ------------------- */
-/* Printing properties */
-/* ------------------- */
-@media print {
-  section {
-    page-break-inside: avoid;
   }
 }

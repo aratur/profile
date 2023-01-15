@@ -1,0 +1,55 @@
+@media print {
+  body {
+    font-size: 10pt;
+    margin: 0;
+  }
+
+  header h1,
+  header h2 {
+    font-size: 1.5em;
+  }
+
+  main,
+  .sidebar-container,
+  .experience-container {
+    column-gap: 0;
+    row-gap: 0;
+  }
+
+  .sidebar-backgroud {
+    display: none;
+  }
+
+  :root {
+    --width-sidebar: 175pt;
+    --width-header-background: 160px;
+  }
+
+  header {
+    margin: 0;
+  }
+
+  .header-backgroud {
+    position: absolute;
+    inset: 1.2rem 0 0 0;
+  }
+
+  .profile-photo {
+    --width-photo: 180px;
+    --width-border: 10px;
+  }
+
+  main {
+    grid-template:
+      'profile-summary profile-summary'
+      'skills skills'
+      'sidebar sidebar'
+      'experience experience';
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.5rem;
+  }
+
+  .sidebar-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
