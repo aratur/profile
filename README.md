@@ -6,7 +6,7 @@ This repo contains my CV done using html, css and a few lines of JS.
 
 ### PDF version
 
-![](pdf/artur.jedrzejczak.pdf)
+- a PDF version URL: [github.com/aratur/profile/tree/main/pdf](https://github.com/aratur/profile/tree/main/pdf)
 
 ### Links
 

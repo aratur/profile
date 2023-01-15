@@ -42,6 +42,10 @@ header {
   font-size: clamp(1.3em, 5vw, 1.7em);
 }
 
+ul {
+  list-style-position: inside;
+}
+
 .header-text {
   display: flex;
   flex-direction: column;
