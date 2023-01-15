@@ -33,4 +33,8 @@
     text-shadow: none;
     color: inherit;
   }
+
+  .header-background {
+    width: 100vw;
+  }
 }
