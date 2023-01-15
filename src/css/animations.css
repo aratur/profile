@@ -81,6 +81,7 @@ a:hover::after {
 .frontend.animate::after {
   animation-iteration-count: 1;
 }
+
 .frontend:hover::after {
   animation-iteration-count: infinite;
 }
@@ -99,9 +100,13 @@ a:hover::after {
 /* --------------------------------------- */
 /* animate svg on hover over profile photo */
 /* --------------------------------------- */
-.profile-photo svg:hover,
-.profile-photo svg.animate {
+
+.profile-photo svg:hover {
   animation: dash 2s ease-in-out 0ms 1 forwards;
+}
+
+.profile-photo svg.animate {
+  animation: dash 2s ease-in-out 0ms infinite forwards;
 }
 
 @keyframes dash {
