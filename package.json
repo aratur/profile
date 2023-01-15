@@ -1,0 +1,34 @@
+{
+  "name": "profile",
+  "version": "1.0.0",
+  "description": "profile page / CV",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "dev": "rm -rf dist && parcel",
+    "prod": "rm -rf dist && parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aratur/profile.git"
+  },
+  "author": "Artur Jedrzejczak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aratur/profile/issues"
+  },
+  "homepage": "https://github.com/aratur/profile#readme",
+  "engines": {
+    "node": ">= 18"
+  },
+  "targets": {
+    "node": {
+      "sourceMap": true,
+      "optimize": true,
+      "scopeHoist": true
+    }
+  },
+  "devDependencies": {
+    "parcel": "^2.8.2"
+  }
+}

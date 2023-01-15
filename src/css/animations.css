@@ -1,0 +1,118 @@
+/* ------------------ */
+/* Reduced motion */
+/* ------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .frontend::after,
+  .profile-photo svg:hover {
+    animation: none;
+  }
+}
+
+/* --------------- */
+/* Links animation */
+/* --------------- */
+
+a {
+  width: max-content;
+  position: relative;
+  transition: 100ms ease-out;
+}
+
+a:hover {
+  transform: scaleX(1.05);
+}
+
+a::after {
+  position: absolute;
+  top: 1.8rem;
+  left: 3.1rem;
+  content: '';
+  width: 75%;
+  height: 1px;
+  background-color: var(--clr-primary-font);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 300ms ease-out;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+}
+
+/* --------------------------- */
+/* FRONTED DEVELOPER animation */
+/* --------------------------- */
+
+.frontend {
+  position: relative;
+  width: max-content;
+}
+
+/* needed to align typing animation */
+.frontend-space {
+  display: inline-block;
+  width: 13px;
+}
+
+.frontend::after {
+  position: absolute;
+  content: '';
+  width: 105%;
+  height: 100%;
+  background-color: var(--clr-frontend-background);
+  inset: 0 0 0 0;
+  transform: scaleX(0);
+}
+
+@media screen and (max-width: 950px) {
+  .frontend::after {
+    --clr-frontend-background: white;
+  }
+}
+
+/* animate on hover or based on intersection observer */
+.frontend:hover::after,
+.frontend.animate::after {
+  animation: typewriter 3s steps(19, start);
+  animation-delay: 300ms;
+}
+
+.frontend.animate::after {
+  animation-iteration-count: 1;
+}
+.frontend:hover::after {
+  animation-iteration-count: infinite;
+}
+
+@keyframes typewriter {
+  to {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+  from {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+}
+
+/* --------------------------------------- */
+/* animate svg on hover over profile photo */
+/* --------------------------------------- */
+.profile-photo svg:hover,
+.profile-photo svg.animate {
+  animation: dash 2s ease-in-out 0ms 1 forwards;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 100 50;
+  }
+  75% {
+    stroke-dasharray: 40 calc(3.14 * 280px + 1px);
+  }
+  100% {
+    rotate: 180deg;
+    stroke-dasharray: calc(3.14 * 280px * 0.8) 1000;
+  }
+}

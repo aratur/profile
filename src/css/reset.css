@@ -1,0 +1,33 @@
+/* very, very basic css reset */
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote,
+section {
+  margin: 0;
+}
+
+/* format links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+ul {
+  /* list-style: none; */
+  padding: 0 0 0 1em;
+  margin: 0;
+}
+
+address {
+  font-style: normal;
+}
