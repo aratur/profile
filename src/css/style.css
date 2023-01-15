@@ -52,13 +52,14 @@ ul {
   align-items: flex-end;
 }
 
-.header-backgroud {
+.header-background {
   position: absolute;
   inset: 4rem 0 0 0;
   background-color: var(--clr-header-bar-background);
   z-index: -200;
   height: var(--width-header-background);
-  width: 100vw;
+  width: 120vw;
+  overflow: hidden;
 }
 
 /* ------------------------ */
@@ -201,7 +202,7 @@ footer {
   align-content: flex-start;
 }
 
-.sidebar-backgroud {
+.sidebar-background {
   position: fixed;
   inset: 0 0 0 0;
   background-color: var(--clr-sidebar-background);
@@ -294,9 +295,9 @@ main {
   on smaller screens things start to come apart
   this is to prevent that and maintain some usability
 */
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 350px) {
   body {
-    min-width: 375px;
+    min-width: 350px;
     overflow: auto;
   }
 }

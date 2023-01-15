@@ -16,7 +16,7 @@
     row-gap: 0;
   }
 
-  .sidebar-backgroud {
+  .sidebar-background {
     display: none;
   }
 
@@ -29,7 +29,7 @@
     margin: 0;
   }
 
-  .header-backgroud {
+  .header-background {
     position: absolute;
     inset: 1.2rem 0 0 0;
   }
