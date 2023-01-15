@@ -33,7 +33,7 @@ observer.observe(frontend);
 // function for adding animate class on click
 const addAnimationOnClick = (element) => {
   element.addEventListener(
-    'click',
+    'touchstart',
     () => {
       const { classList } = element;
       if (classList.contains('animate') === false) {
