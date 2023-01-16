@@ -2,6 +2,7 @@
 // element comes into viewport
 
 const frontend = document.querySelector('.frontend');
+const profilePhoto = document.querySelector('#profile-svg');
 
 const options = {
   root: null, // defaults to viewport
@@ -31,28 +32,33 @@ let observer = new IntersectionObserver(callback, options);
 observer.observe(frontend);
 
 // function for adding animate class on click
-const addAnimationEventHandler = (event) => {
-  const { classList } = event.target;
-  if (classList.contains('animate') === false) {
-    // add animate class
-    classList.add('animate');
-    // after the timeout remove the class is exists
-    setTimeout(() => {
-      if (classList.contains('animate')) {
-        classList.remove('animate');
-      }
-    }, 2000);
-  } else {
-    // if the animate class already exists do nothing
-  }
+const addAnimationEventHandler = (target) => {
+  return (event) => {
+    const { classList } = target;
+    if (classList.contains('animate') === false) {
+      // add animate class
+      classList.add('animate');
+      // after the timeout remove the class is exists
+      setTimeout(() => {
+        if (classList.contains('animate')) {
+          classList.remove('animate');
+        }
+      }, 2000);
+    } else {
+      // if the animate class already exists do nothing
+    }
+  };
 };
 
 const addAnimationOnClick = (eventsList, element) => {
   eventsList.forEach((eventName) =>
-    element.addEventListener(eventName, addAnimationEventHandler, false)
+    element.addEventListener(
+      eventName,
+      addAnimationEventHandler(element),
+      false
+    )
   );
 };
 
 // handle onclick on profile photo for mobile devices
-const profilePhoto = document.querySelector('#profile-svg');
 addAnimationOnClick(['mouseover', 'touchstart'], profilePhoto);

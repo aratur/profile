@@ -52,13 +52,13 @@ a:hover::after {
 /* needed to align typing animation */
 .frontend-space {
   display: inline-block;
-  width: 13px;
+  width: 0.45em;
 }
 
 .frontend::after {
   position: absolute;
   content: '';
-  width: 105%;
+  width: 11.5em;
   height: 100%;
   background-color: var(--clr-frontend-background);
   inset: 0 0 0 0;
@@ -73,7 +73,7 @@ a:hover::after {
 
 /* animate based on intersection observer */
 .frontend.animate::after {
-  animation: typewriter 3s steps(19, start);
+  animation: typewriter 3s steps(20, start);
   animation-iteration-count: 1;
   animation-delay: 750ms;
 }
@@ -93,7 +93,7 @@ a:hover::after {
 /* animate svg on hover over profile photo */
 /* --------------------------------------- */
 
-.profile-photo svg:has(.animate) {
+.profile-photo svg.animate {
   animation: dash 2s ease-in-out 0ms 1 forwards;
 }
 
