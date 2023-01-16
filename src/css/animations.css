@@ -47,6 +47,7 @@ a:hover::after {
 .frontend {
   position: relative;
   width: max-content;
+  overflow-x: hidden;
 }
 
 /* needed to align typing animation */
