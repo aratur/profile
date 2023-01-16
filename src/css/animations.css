@@ -71,19 +71,11 @@ a:hover::after {
   }
 }
 
-/* animate on hover or based on intersection observer */
-.frontend:hover::after,
+/* animate based on intersection observer */
 .frontend.animate::after {
   animation: typewriter 3s steps(19, start);
-  animation-delay: 300ms;
-}
-
-.frontend.animate::after {
   animation-iteration-count: 1;
-}
-
-.frontend:hover::after {
-  animation-iteration-count: infinite;
+  animation-delay: 750ms;
 }
 
 @keyframes typewriter {
@@ -101,12 +93,8 @@ a:hover::after {
 /* animate svg on hover over profile photo */
 /* --------------------------------------- */
 
-.profile-photo svg:hover {
-  animation: dash 2s ease-in-out 100ms 1 forwards;
-}
-
-.profile-photo svg.animate {
-  animation: dash 2s ease-in-out 100ms infinite forwards;
+.profile-photo svg:has(.animate) {
+  animation: dash 2s ease-in-out 0ms 1 forwards;
 }
 
 @keyframes dash {
@@ -114,10 +102,10 @@ a:hover::after {
     stroke-dasharray: 100 50;
   }
   75% {
-    stroke-dasharray: 40 calc(3.14 * var(--width-photo) + 1px);
+    stroke-dasharray: 40 calc(3.14 * 240 + 1px);
   }
   100% {
     rotate: 180deg;
-    stroke-dasharray: calc(3.14 * var(--width-photo) * 0.8) 1000;
+    stroke-dasharray: calc(3.14 * 240 * 0.9) 1000;
   }
 }

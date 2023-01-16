@@ -97,7 +97,7 @@ ul {
   border-radius: 20rem;
   stroke: var(--clr-accent);
   rotate: 180deg;
-  stroke-dasharray: calc(3.14 * var(--width-photo) * 0.8) 1000;
+  stroke-dasharray: calc(3.14 * 240 * 0.9) 1000;
   stroke-linecap: round;
 }
 
@@ -170,7 +170,10 @@ table th {
   text-align: left;
   padding-right: 0.5em;
   font-weight: bold;
-  width: var(--width-table-header);
+}
+
+.experience table th {
+  width: 115px;
 }
 
 header,
@@ -235,10 +238,6 @@ main {
   grid-area: profile-summary;
 }
 
-.skills {
-  grid-area: skills;
-}
-
 .no-linebreak {
   white-space: nowrap;
 }
@@ -249,7 +248,6 @@ main {
     grid-template:
       'profile-summary'
       'sidebar'
-      'skills'
       'experience';
     grid-template-columns: 1fr;
     column-gap: 0;
@@ -295,10 +293,6 @@ main {
   this is to prevent that and maintain some usability
 */
 @media screen and (max-width: 350px) {
-  * {
-    animation: none !important;
-  }
-
   body {
     min-width: 320px;
     overflow: auto;
@@ -309,8 +303,8 @@ main {
   }
 
   :root {
-    --width-photo-border: 10px;
-    --width-photo: 200px;
+    --width-photo-border: 12px;
+    --width-photo: 220px;
   }
 
   .header-background {

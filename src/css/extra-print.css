@@ -36,7 +36,7 @@
 
   .profile-photo {
     --width-photo: 180px;
-    --width-border: 10px;
+    --width-photo-border: 12px;
   }
 
   main {
