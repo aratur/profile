@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Artur Jedrzejczak profile site</title>
+    <title>Artur Jedrzejczak - Profile</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-    <link rel="stylesheet" href="css/print.css" media="print" />
-    <link rel="stylesheet" href="css/extra-print.css" media="print" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Teko:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sass/index.scss" />
     <script defer src="script.js"></script>
   </head>
-  <body>
-    <header class=".header">
-      <div class="profile-photo">
+  <body class="body">
+    <header class="header profile__header">
+      <nav class="nav moving_gradient">
+        <ul class="profile__ul">
+          <li data-title="Home Page">
+            <a href="/" class="nav__link_active"
+              ><img src="img/home.svg" alt="home page"
+            /></a>
+          </li>
+          <li data-title="Portfolio Page">
+            <a href="/portfolio" target="_self"
+              ><img src="img/portfolio.svg" alt="portfolio page"
+            /></a>
+          </li>
+          <li data-title="Download PDF">
+            <a href="/pdf/artur.jedrzejczak.pdf" download
+              ><img src="img/download.svg" alt="download"
+            /></a>
+          </li>
+        </ul>
+      </nav>
+      <div class="profile__photo">
         <svg
           id="profile-svg"
           xmlns="http://www.w3.org/2000/svg"
@@ -22,17 +44,19 @@
           <path d="m 10 140 a 1 1 0 0 1 260 0 a 1 1 0 0 1 -260 0" />
         </svg>
       </div>
-      <div class="header-text">
-        <h1><span class="name-text-color">Artur</span> Jędrzejczak</h1>
-        <h2 class="frontend">
+      <div class="profile__header_text">
+        <h1 class="h1">
+          <span class="name-text-color">Artur</span> Jędrzejczak
+        </h1>
+        <h2 class="h2 frontend">
           Frontend<span class="frontend-space"> </span>developer
         </h2>
       </div>
-      <div class="header-background"></div>
+      <div class="profile__header_background"></div>
     </header>
-    <main class="cv-grid">
-      <section class="profile-summary center-on-mobile">
-        <h2>Profile summary</h2>
+    <main class="profile__cv_grid">
+      <section class="profile__section profile-summary center_on_mobile">
+        <h2 class="h2">Profile summary</h2>
         <p>
           Developer with almost 15 years of experience working with different
           technologies (over 2 years frontend) looking for a role as a
@@ -43,15 +67,17 @@
           notice period.
         </p>
       </section>
-      <div class="sidebar-container">
-        <section class="contact-data center-on-mobile">
-          <h2>Contact</h2>
+      <div class="profile__sidebar__container">
+        <section
+          class="profile__section profile__contact_data center_on_mobile"
+        >
+          <h2 class="h2">Contact</h2>
           <a href="mailto:artur.jedrzejczak@gmail.com"
             ><img
               src="img/mail.svg"
               alt="mail icon"
               aria-hidden="true"
-              class="icon"
+              class="profile__contact_data__icon"
             />
             artur.jedrzejczak@gmail.com</a
           >
@@ -60,7 +86,7 @@
               src="img/phone.svg"
               alt="phone icon"
               aria-hidden="true"
-              class="icon"
+              class="profile__contact_data__icon"
             />
             +48 664 289 281</a
           >
@@ -72,7 +98,7 @@
               <img
                 src="img/pin.svg"
                 alt="pin icon"
-                class="icon"
+                class="profile__contact_data__icon"
                 aria-hidden="true"
               />
               Poznan, Poland
@@ -82,14 +108,14 @@
             ><img
               src="img/git.svg"
               alt="github icon"
-              class="icon"
+              class="profile__contact_data__icon"
               aria-hidden="true"
             />
             github.com/aratur</a
           >
         </section>
-        <section class="skills">
-          <h2>Skills</h2>
+        <section class="profile__section skills">
+          <h2 class="h2">Skills</h2>
           <table>
             <tr>
               <th>Frontend:</th>
@@ -112,33 +138,33 @@
             </tr>
           </table>
         </section>
-        <section class="education center-on-mobile">
-          <h2>Education</h2>
+        <section class="profile__section education center_on_mobile">
+          <h2 class="h2">Education</h2>
           <p>
             Poznań University of Economics<br />
             Master's Degree, Information Systems<br />
             [ 2004 - 2009 ]
           </p>
         </section>
-        <section class="certification center-on-mobile">
-          <h2>Certification</h2>
-          <ul>
+        <section class="profile__section certification center_on_mobile">
+          <h2 class="h2">Certification</h2>
+          <ul class="profile__ul">
             <li>Oracle DB SQL Certified Expert</li>
             <li>Oracle Certified Associate, Java SE 8 Programmer</li>
             <li>IBM Data Science Professional Certificate</li>
             <li>
               Professional Scrum Master
-              <span class="no-linebreak">(PSM I)</span>
+              <span class="no_wrap">(PSM I)</span>
             </li>
           </ul>
         </section>
       </div>
-      <div class="experience-container">
-        <section class="experience">
-          <h2>Experience</h2>
-          <div class="experience-header-flex">
-            <h3>07/2020 - Present</h3>
-            <h3>SENIOR DEVELOPER AT CAPCO Poland Sp. z o.o.</h3>
+      <div class="profile__experience__container">
+        <section class="profile__section profile__experience">
+          <h2 class="h2">Experience</h2>
+          <div class="profile__experience__header_flex">
+            <h3 class="h3">07/2020 - Present</h3>
+            <h3 class="h3">SENIOR DEVELOPER AT CAPCO Poland Sp. z o.o.</h3>
           </div>
           <table>
             <tr>
@@ -159,11 +185,11 @@
             </tr>
           </table>
         </section>
-        <section class="experience">
-          <h2>Experience</h2>
-          <div class="experience-header-flex">
-            <h3>07/2020 - Present</h3>
-            <h3>Personal fronted development mastery path</h3>
+        <section class="profile__section profile__experience">
+          <h2 class="h2">Experience</h2>
+          <div class="profile__experience__header_flex">
+            <h3 class="h3">07/2020 - Present</h3>
+            <h3 class="h3">Personal fronted development mastery path</h3>
           </div>
           <table>
             <tr>
@@ -193,10 +219,10 @@
             </tr>
           </table>
         </section>
-        <section class="experience">
-          <div class="experience-header-flex">
-            <h3>06/2017 - 07/2020</h3>
-            <h3>SENIOR DEVELOPER AT CAPCO Poland Sp. z o.o.</h3>
+        <section class="profile__section profile__experience">
+          <div class="profile__experience__header_flex">
+            <h3 class="h3">06/2017 - 07/2020</h3>
+            <h3 class="h3">SENIOR DEVELOPER AT CAPCO Poland Sp. z o.o.</h3>
           </div>
           <table>
             <tr>
@@ -217,10 +243,10 @@
             </tr>
           </table>
         </section>
-        <section class="experience">
-          <div class="experience-header-flex">
-            <h3>11/2015 - 02/2017</h3>
-            <h3>CONSULTANT at ACCENTURE sp. z o.o.</h3>
+        <section class="profile__section profile__experience">
+          <div class="profile__experience__header_flex">
+            <h3 class="h3">11/2015 - 02/2017</h3>
+            <h3 class="h3">CONSULTANT at ACCENTURE sp. z o.o.</h3>
           </div>
           <table>
             <tr>
@@ -243,10 +269,10 @@
             </tr>
           </table>
         </section>
-        <section class="experience">
-          <div class="experience-header-flex">
-            <h3>01/2015 - 07/2015</h3>
-            <h3>CONSULTANT at ACCENTURE sp. z o.o.</h3>
+        <section class="profile__section profile__experience">
+          <div class="profile__experience__header_flex">
+            <h3 class="h3">01/2015 - 07/2015</h3>
+            <h3 class="h3">CONSULTANT at ACCENTURE sp. z o.o.</h3>
           </div>
           <table>
             <tr>
@@ -267,10 +293,10 @@
             </tr>
           </table>
         </section>
-        <section class="experience">
-          <div class="experience-header-flex">
-            <h3>03/2013 - 12/2014</h3>
-            <h3>CONSULTANT at ACCENTURE sp. z o.o.</h3>
+        <section class="profile__section profile__experience">
+          <div class="profile__experience__header_flex">
+            <h3 class="h3">03/2013 - 12/2014</h3>
+            <h3 class="h3">CONSULTANT at ACCENTURE sp. z o.o.</h3>
           </div>
           <table>
             <tr>
@@ -293,10 +319,10 @@
             </tr>
           </table>
         </section>
-        <section class="experience">
-          <div class="experience-header-flex">
-            <h3>12/2010 - 11/2013</h3>
-            <h3>ANALYST AT ACCENTURE Sp. z o.o.</h3>
+        <section class="profile__section profile__experience">
+          <div class="profile__experience__header_flex">
+            <h3 class="h3">12/2010 - 11/2013</h3>
+            <h3 class="h3">ANALYST AT ACCENTURE Sp. z o.o.</h3>
           </div>
           <table>
             <tr>
@@ -317,10 +343,10 @@
             </tr>
           </table>
         </section>
-        <section class="experience">
-          <div class="experience-header-flex">
-            <h3>08/2008 - 11/2010</h3>
-            <h3>DEVELOPMENT SPECIALIST AT BZ WBK s.a.</h3>
+        <section class="profile__section profile__experience">
+          <div class="profile__experience__header_flex">
+            <h3 class="h3">08/2008 - 11/2010</h3>
+            <h3 class="h3">DEVELOPMENT SPECIALIST AT BZ WBK s.a.</h3>
           </div>
           <table>
             <tr>
@@ -341,9 +367,9 @@
           </table>
         </section>
       </div>
-      <div class="sidebar-background"></div>
+      <div class="profile__sidebar_background"></div>
     </main>
-    <footer>
+    <footer class="profile__footer">
       <blockquote>
         <small>
           Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb

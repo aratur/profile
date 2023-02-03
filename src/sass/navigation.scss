@@ -1,0 +1,107 @@
+/* Custom styling */
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 2rem;
+  background-color: hsla(0, 0%, 90%, 0.9);
+  padding: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  box-shadow: 2px 2px 4px 4px hsla(0, 0%, 0%, 0.1);
+  z-index: 500;
+}
+
+.moving_gradient {
+  background-image: linear-gradient(
+    90deg,
+    hsla(0, 0%, 90%, 0.9),
+    hsla(0, 0%, 90%, 0.9) 35%,
+    rgba(230, 177, 20, 0.3),
+    hsla(0, 0%, 90%, 0.9) 65%,
+    hsla(0, 0%, 90%, 0.9)
+  );
+  background-position: 100%;
+  background-size: 200%;
+  animation-name: trans;
+  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes trans {
+  0% {
+    background-position: 100%;
+    /* background-color: red; */
+  }
+  50% {
+    background-position: 0%;
+    /* background-color: blue; */
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.nav ul * {
+  height: 2rem;
+  width: 2rem;
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  row-gap: 1rem;
+  column-gap: 1rem;
+}
+
+.nav li:nth-child(2) {
+  padding-inline: 1rem;
+  border-inline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.nav a {
+  display: inline-block;
+  filter: invert(20%) sepia(17%) saturate(1519%) hue-rotate(166deg)
+    brightness(95%) contrast(100%);
+  transform: scale(1);
+  transition: 200ms ease-in 0ms;
+}
+
+.nav a:hover {
+  transform: scale(1.25);
+  filter: invert(85%) sepia(34%) saturate(3069%) hue-rotate(351deg)
+    brightness(94%) contrast(92%);
+}
+
+.nav li {
+  position: relative;
+}
+
+.nav li:hover::after {
+  position: absolute;
+  top: 3.2rem;
+  right: 0;
+  content: attr(data-title);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 2;
+  width: 8rem;
+  text-align: center;
+  filter: none;
+  background-color: hsla(0, 0%, 90%, 0.9);
+  border-radius: 0.5rem;
+}
+
+a.nav__link_active {
+  position: relative;
+  filter: invert(85%) sepia(34%) saturate(3069%) hue-rotate(351deg)
+    brightness(94%) contrast(92%);
+}

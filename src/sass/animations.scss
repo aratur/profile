@@ -13,17 +13,17 @@
 /* Links animation */
 /* --------------- */
 
-a {
+.contact-data a {
   width: max-content;
   position: relative;
   transition: 100ms ease-out;
 }
 
-a:hover {
+.contact-data a:hover {
   transform: scaleX(1.05);
 }
 
-a::after {
+.contact-data a::after {
   position: absolute;
   top: 1.8rem;
   left: 3.1rem;
@@ -36,7 +36,7 @@ a::after {
   transition: 300ms ease-out;
 }
 
-a:hover::after {
+.contact-data a:hover::after {
   transform: scaleX(1);
 }
 
@@ -103,10 +103,10 @@ a:hover::after {
     stroke-dasharray: 100 50;
   }
   75% {
-    stroke-dasharray: 40 calc(3.14 * 240 + 1px);
+    stroke-dasharray: 40 calc(3.14 * 240px + 1px);
   }
   100% {
     rotate: 180deg;
-    stroke-dasharray: calc(3.14 * 240 * 0.9) 1000;
+    stroke-dasharray: calc(3.14 * 240px * 0.9) 1000;
   }
 }

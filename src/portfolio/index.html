@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Teko:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../sass/index.scss" />
+    <title>Artur Jędrzejczak - Portfolio</title>
+  </head>
+  <body class="body portfolio">
+    <header class="header portfolio__header">
+      <nav class="nav moving_gradient">
+        <ul>
+          <li data-title="Home Page">
+            <a href="/"><img src="../img/home.svg" alt="home page" /></a>
+          </li>
+          <li data-title="Portfolio Page">
+            <a href="/portfolio" target="_self" class="nav__link_active"
+              ><img src="../img/portfolio.svg" alt="portfolio page"
+            /></a>
+          </li>
+          <li data-title="Download PDF">
+            <a href="/pdf/artur.jedrzejczak.pdf" download
+              ><img src="../img/download.svg" alt="download"
+            /></a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="h1">Portfolio of sharable projects</h1>
+    </header>
+    <main class="portfolio__main">
+      <div class="grid">
+        <input
+          class="portfolio__grid__checkbox"
+          type="checkbox"
+          name="multi-page"
+          id="multi-page"
+        />
+        <label for="multi-page" class="grid__item">
+          <div class="grid__item_clip">
+            <img class="grid__item__img" src="img/fm-multipage.png" alt="" />
+            <h2 class="h2 grid__item__h2">2023</h2>
+          </div>
+          <a
+            href="https://frontendmentor-payapi-multi-page-website.vercel.app/"
+            target="_blank"
+            class="grid__item__live_site"
+            >Live site</a
+          >
+          <a
+            href="https://github.com/aratur/frontendmentor-payapi-multi-page-website"
+            target="_blank"
+            class="grid__item__repository"
+            >Repository</a
+          >
+        </label>
+        <input
+          class="portfolio__grid__checkbox"
+          type="checkbox"
+          name="fm-job-list"
+          id="fm-job-list"
+        />
+        <label for="fm-job-list" class="grid__item">
+          <div class="grid__item_clip">
+            <img class="grid__item__img" src="img/fm-job-list.png" alt="" />
+            <h2 class="h2 grid__item__h2">2023</h2>
+          </div>
+          <a
+            href="https://frontendmentor-job-listing-with-filtering.vercel.app/"
+            target="_blank"
+            class="grid__item__live_site"
+            >Live site</a
+          >
+          <a
+            href="https://github.com/aratur/frontendmentor-job-listing-with-filtering"
+            target="_blank"
+            class="grid__item__repository"
+            >Repository</a
+          >
+        </label>
+        <input
+          class="portfolio__grid__checkbox"
+          type="checkbox"
+          name="fm-landing"
+          id="fm-landing"
+        />
+        <label for="fm-landing" class="grid__item">
+          <div class="grid__item_clip">
+            <img class="grid__item__img" src="img/fm-landing.png" alt="" />
+            <h2 class="h2 grid__item__h2">2023</h2>
+          </div>
+          <a
+            href="https://frontend-mentor-landing-page-nine.vercel.app/"
+            target="_blank"
+            class="grid__item__live_site"
+            >Live site</a
+          >
+          <a
+            href="https://github.com/aratur/frontend-mentor-landing-page"
+            target="_blank"
+            class="grid__item__repository"
+            >Repository</a
+          >
+        </label>
+        <input
+          class="portfolio__grid__checkbox"
+          type="checkbox"
+          name="mario"
+          id="mario"
+        />
+        <label for="mario" class="grid__item">
+          <div class="grid__item_clip">
+            <img class="grid__item__img" src="img/mario.png" alt="mario" />
+            <h2 class="h2 grid__item__h2">2021</h2>
+          </div>
+          <a
+            href="https://mario-snake.vercel.app/"
+            target="_blank"
+            class="grid__item__live_site"
+            >Live site</a
+          >
+          <a
+            href="https://github.com/aratur/mario-snake"
+            target="_blank"
+            class="grid__item__repository"
+            >Repository</a
+          >
+        </label>
+        <input
+          class="portfolio__grid__checkbox"
+          type="checkbox"
+          name="multiplication"
+          id="multiplication"
+        />
+        <label for="multiplication" class="grid__item">
+          <div class="grid__item_clip">
+            <img
+              class="grid__item__img"
+              src="img/multiplication.png"
+              alt="multiplication"
+            />
+            <h2 class="h2 grid__item__h2">2021</h2>
+          </div>
+          <a
+            href="https://multiplication.vercel.app/"
+            target="_blank"
+            class="grid__item__live_site"
+            >Live site</a
+          >
+          <a
+            href="https://github.com/aratur/multiplication"
+            target="_blank"
+            class="grid__item__repository"
+            >Repository</a
+          >
+        </label>
+      </div>
+    </main>
+  </body>
+</html>

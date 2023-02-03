@@ -38,7 +38,7 @@ const addAnimationEventHandler = (target) => {
     if (classList.contains('animate') === false) {
       // add animate class
       classList.add('animate');
-      // after the timeout remove the class is exists
+      // after the timeout remove the class if exists
       setTimeout(() => {
         if (classList.contains('animate')) {
           classList.remove('animate');

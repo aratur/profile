@@ -1,0 +1,16 @@
+:root {
+  --clr-primary-font: hsl(0, 0%, 0%);
+  --clr-darker-blue: hsl(208, 52%, 20%);
+  --clr-dark-blue: hsl(208, 52%, 30%);
+  --clr-accent: hsl(45, 84%, 49%);
+  --clr-header-bar-background: hsl(208, 12%, 70%);
+  --clr-sidebar-background: hsl(208, 12%, 80%);
+  --clr-frontend-background: var(--clr-header-bar-background);
+  --fnt-primary: 'Roboto', sans-serif;
+  --fnt-header: 'Teko', sans-serif;
+  --width-body: min(95vw, 1200px);
+  --width-sidebar: 350px;
+  --width-header-background: 15rem;
+  --width-photo-border: 20px;
+  --width-photo: 280px;
+}

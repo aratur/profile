@@ -1,26 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
-@import url(reset.css);
-
-:root {
-  --clr-primary-font: hsl(0, 0%, 0%);
-  --clr-darker-blue: hsl(208, 52%, 20%);
-  --clr-dark-blue: hsl(208, 52%, 30%);
-  --clr-accent: hsl(45, 84%, 49%);
-  --clr-header-bar-background: hsl(208, 52%, 70%);
-  --clr-sidebar-background: hsl(208, 52%, 80%);
-  --clr-frontend-background: var(--clr-header-bar-background);
-  --fnt-primary: 'Roboto', sans-serif;
-  --fnt-header: 'Teko', sans-serif;
-  --width-body: min(95vw, 1200px);
-  --width-sidebar: 350px;
-  --width-header-background: 15rem;
-  --width-photo-border: 20px;
-  --width-photo: 280px;
-}
-
 /* define baseline attributes of the page */
-body {
+.body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
@@ -32,7 +11,7 @@ body {
   color: var(--clr-primary-font);
 }
 
-header {
+.header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -43,17 +22,17 @@ header {
   font-size: clamp(1.3em, 5vw, 1.7em);
 }
 
-ul {
+.profile__ul {
   list-style-position: inside;
 }
 
-.header-text {
+.profile__header_text {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.header-background {
+.profile__header_background {
   position: absolute;
   inset: 4rem 0 0 0;
   background-color: var(--clr-header-bar-background);
@@ -65,7 +44,7 @@ ul {
 /* ------------------------ */
 /* Profile phot formatting  */
 /* ------------------------ */
-.profile-photo {
+.profile__photo {
   position: relative;
   box-sizing: border-box;
   background-image: url('../img/profile\ photo.png');
@@ -86,7 +65,7 @@ ul {
 /* --------------------------- */
 /* accent around profile photo */
 /* --------------------------- */
-.profile-photo svg {
+.profile__photo svg {
   position: absolute;
   inset: calc(0px - var(--width-photo-border)) 0 0
     calc(0px - var(--width-photo-border));
@@ -102,14 +81,14 @@ ul {
 }
 
 /* contact data links */
-.contact-data a {
+.profile__contact_data a {
   display: flex;
   align-items: center;
   line-height: 2.5em;
 }
 
 /* enforce the size of all icons and use of the aria tag on icons */
-.icon[aria-hidden='true'] {
+.profile__contact_data__icon[aria-hidden='true'] {
   margin-right: 1em;
   height: 1.3em;
   aspect-ratio: 1 /1;
@@ -119,17 +98,17 @@ ul {
 }
 
 /* set the font, and uppercase for headers h1-4 */
-h1,
-h2,
-h3,
-h4 {
+.h1,
+.h2,
+.h3,
+.h4 {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-family: var(--fnt-header);
   color: var(--clr-dark-blue);
 }
 
-h1 {
+.h1 {
   color: var(--clr-darker-blue);
 }
 
@@ -138,13 +117,13 @@ h1 {
   text-shadow: 0.05em 0.05em var(--clr-darker-blue);
 }
 
-/* underline for headers h2 */
-h2 {
+.profile__section .h2 {
   position: relative;
   margin-bottom: 0.5rem;
 }
 
-main h2::after {
+/* underline for headers h2 */
+.profile__section .h2::after {
   position: absolute;
   top: 1.3em;
   left: 0;
@@ -155,7 +134,7 @@ main h2::after {
   background-color: var(--clr-accent);
 }
 
-main {
+.profile__cv_grid {
   display: grid;
   row-gap: 1rem;
 }
@@ -172,16 +151,16 @@ table th {
   font-weight: bold;
 }
 
-.experience table th {
+.profile__experience table th {
   width: 115px;
 }
 
-header,
-section {
+.profile__header,
+.profile__section {
   padding: 0.5rem;
 }
 
-.experience-header-flex {
+.profile__experience__header_flex {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -190,21 +169,21 @@ section {
   align-items: center;
 }
 
-footer {
+.profile__footer {
   font-size: 0.8rem;
   font-style: italic;
   padding: 0.5rem;
 }
 
-.experience-container,
-.sidebar-container {
+.profile__experience__container,
+.profile__sidebar__container {
   display: grid;
   row-gap: 1rem;
   align-items: start;
   align-content: flex-start;
 }
 
-.sidebar-background {
+.profile__sidebar_background {
   position: fixed;
   inset: 0 0 0 0;
   background-color: var(--clr-sidebar-background);
@@ -217,7 +196,7 @@ footer {
 /* RESPONSIVE specific stuff  */
 /*--------------------------- */
 
-main {
+.profile__cv_grid {
   grid-template:
     'sidebar profile-summary'
     'sidebar skills'
@@ -226,25 +205,25 @@ main {
   column-gap: 1rem;
 }
 
-.experience-container {
+.profile__experience__container {
   grid-area: experience;
 }
 
-.sidebar-container {
+.profile__sidebar__container {
   grid-area: sidebar;
 }
 
-.profile-summary {
+.profile__summary {
   grid-area: profile-summary;
 }
 
-.no-linebreak {
+.no_wrap {
   white-space: nowrap;
 }
 
 @media screen and (max-width: 950px) {
   /* shift page elements into new slots */
-  main {
+  .profile__cv_grid {
     grid-template:
       'profile-summary'
       'sidebar'
@@ -259,46 +238,45 @@ main {
   }
 
   /* center blocks and contained text */
-  header {
+  .profile__header {
     justify-content: center;
   }
 
-  .header-text {
+  .profile__header_text {
     align-items: center;
     text-align: center;
   }
 
-  .center-on-mobile {
+  .center_on_mobile {
     margin: 0 auto;
     text-align: center;
   }
 
-  h1 {
+  .profile__body .h1 {
     margin-top: 2rem;
     margin-inline: 2.5rem;
   }
 
-  h2 {
+  .profile__body .h2 {
     text-align: center;
   }
 
   /* center headers's underline */
-  main h2::after {
+  .profile__cv_grid .h2::after {
     left: calc(50% - 1.5em);
   }
 }
 
 /*
-  on smaller screens things start to come apart
-  this is to prevent that and maintain some usability
+  for smaller screens
 */
 @media screen and (max-width: 350px) {
-  body {
+  .profile__body {
     min-width: 320px;
     overflow: auto;
   }
 
-  .profile-photo {
+  .profile__photo {
     margin-inline: 0;
   }
 
@@ -307,7 +285,7 @@ main {
     --width-photo: 220px;
   }
 
-  .header-background {
+  .profile__header_background {
     display: none;
   }
 }
