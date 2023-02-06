@@ -16,7 +16,7 @@
 .grid {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 4rem;
+  margin-block: 3rem;
   justify-content: space-around;
   align-items: center;
   row-gap: 2rem;
@@ -26,6 +26,8 @@
 .grid__item {
   position: relative;
   display: inline-block;
+  padding: 0;
+  border: none;
   border-radius: 0.5rem;
   color: var(--clr-dark-blue);
   box-shadow: -0.5rem -0.5rem 1rem 0.5rem rgba(0, 0, 0, 0.25);
@@ -39,7 +41,7 @@
   cursor: pointer;
   display: block;
   width: 350px;
-  max-width: calc(100vw - 1rem);
+  max-width: calc(100vw - 2rem);
   aspect-ratio: 780 / 1034;
   border-radius: 0.5rem;
   filter: brightness(1);
@@ -59,20 +61,13 @@
   user-select: none;
 }
 
-.portfolio__grid__checkbox {
-  display: none;
-}
-
-:is(.grid__item:hover) .grid__item__img,
-.portfolio__grid__checkbox:checked + .grid__item .grid__item__img {
+:is(.grid__item:hover, .grid__item:focus) .grid__item__img {
   filter: brightness(0.6) blur(3);
   transform: scale(1.1);
 }
 
-:is(.grid__item:hover) .grid__item__live_site,
-:is(.grid__item:hover) .grid__item__repository,
-.portfolio__grid__checkbox:checked + .grid__item .grid__item__live_site,
-.portfolio__grid__checkbox:checked + .grid__item .grid__item__repository {
+:is(.grid__item:hover, .grid__item:focus) .grid__item__live_site,
+:is(.grid__item:hover, .grid__item:focus) .grid__item__repository {
   transform: translateX(-50%) scale(1);
 }
 

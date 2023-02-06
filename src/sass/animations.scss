@@ -4,7 +4,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .frontend::after,
-  .profile-photo svg:hover {
+  .profile__photo:is(:hover, :focus) svg {
     animation: none !important;
   }
 }
@@ -13,17 +13,17 @@
 /* Links animation */
 /* --------------- */
 
-.contact-data a {
+.profile__contact_data a {
   width: max-content;
   position: relative;
   transition: 100ms ease-out;
 }
 
-.contact-data a:hover {
+.profile__contact_data a:hover {
   transform: scaleX(1.05);
 }
 
-.contact-data a::after {
+.profile__contact_data a::after {
   position: absolute;
   top: 1.8rem;
   left: 3.1rem;
@@ -94,7 +94,7 @@
 /* animate svg on hover over profile photo */
 /* --------------------------------------- */
 
-.profile-photo svg.animate {
+.profile__photo:is(:hover, :focus) svg {
   animation: dash 2s ease-in-out 0ms 1 forwards;
 }
 
