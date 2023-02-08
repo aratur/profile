@@ -48,9 +48,8 @@
   position: relative;
   box-sizing: border-box;
   padding: 0;
-  background-image: url('../img/profile\ photo.png');
+  background-image: url('../img/profile_photo.png');
   background-size: cover;
-  background-position-x: 5px;
   border: var(--width-photo-border) solid var(--clr-darker-blue);
   border-radius: 10rem;
   width: var(--width-photo);
@@ -133,6 +132,11 @@
   height: 0.2em;
   border-radius: 1em;
   background-color: var(--clr-accent);
+}
+
+// visible only in printed version
+.qr_code {
+  display: none;
 }
 
 .profile__cv_grid {
