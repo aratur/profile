@@ -1,0 +1,49 @@
+/* --------------------------- */
+/* FRONTED DEVELOPER typing animation */
+/* --------------------------- */
+
+.frontend {
+  position: relative;
+  width: max-content;
+  overflow-x: hidden;
+}
+
+/* needed to align typing animation */
+.frontend-space {
+  display: inline-block;
+  width: 0.45em;
+}
+
+.frontend::after {
+  position: absolute;
+  content: '';
+  width: 11.5em;
+  height: 100%;
+  background-color: var(--clr-frontend-background);
+  inset: 0 0 0 0;
+  transform: scaleX(0);
+}
+
+@media screen and (max-width: 950px) {
+  .frontend::after {
+    --clr-frontend-background: white;
+  }
+}
+
+/* animate based on intersection observer */
+.frontend.animate::after {
+  animation: typewriter 3s steps(20, start);
+  animation-iteration-count: 1;
+  animation-delay: 750ms;
+}
+
+@keyframes typewriter {
+  to {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+  from {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+}

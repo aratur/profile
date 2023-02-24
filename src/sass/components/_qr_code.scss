@@ -1,0 +1,16 @@
+.qr_code {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 1rem;
+  img {
+    max-width: 300px;
+  }
+  @media screen and (max-width: 950px) {
+    row-gap: 0;
+    align-items: center;
+    img {
+      max-width: 250px;
+    }
+  }
+}

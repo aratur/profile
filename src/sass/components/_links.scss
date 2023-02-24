@@ -1,0 +1,51 @@
+/* contact data links */
+.a {
+  display: flex;
+  align-items: center;
+  line-height: 2.5em;
+}
+
+/* enforce the size of all icons and use of the aria tag on icons */
+.a__icon[aria-hidden='true'] {
+  margin-right: 1em;
+  height: 1.3em;
+  aspect-ratio: 1 /1;
+  border: 3px solid black;
+  padding: 0.3em;
+  border-radius: 1.3em;
+  // var(--clr-dark-blue)
+  filter: invert(20%) sepia(17%) saturate(1519%) hue-rotate(166deg)
+    brightness(95%) contrast(100%);
+  transition: filter 200ms ease-in-out;
+}
+
+.a_animation {
+  width: max-content;
+  position: relative;
+  transition: transform 200ms ease-in-out;
+}
+
+.a_animation:hover {
+  transform: scaleX(1.05);
+  .a__icon {
+    filter: invert(85%) sepia(34%) saturate(3069%) hue-rotate(351deg)
+      brightness(94%) contrast(92%);
+  }
+}
+
+.a_animation::after {
+  position: absolute;
+  top: 1.8rem;
+  left: 3.1rem;
+  content: '';
+  width: 75%;
+  height: 1px;
+  background-color: var(--clr-primary-font);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 300ms ease-out;
+}
+
+.a_animation:hover::after {
+  transform: scaleX(1);
+}

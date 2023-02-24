@@ -15,9 +15,9 @@
     <script defer src="script.js"></script>
   </head>
   <body class="body">
-    <header class="header profile__header">
+    <header class="profile__header">
       <nav class="nav moving_gradient">
-        <ul class="profile__ul">
+        <ul class="ul_style_inside">
           <li data-title="Home Page">
             <a href="/" class="nav__link_active"
               ><img src="img/home.svg" alt="home page"
@@ -63,7 +63,7 @@
           mid/senior developer. Motivated, with willingness to learn new
           technologies and skills. Good team worker. Open to a B2B or an
           employment contract, remote work. Due to personal reasons a 4 day
-          working week is preferred. Currently on a B2B contract, with a 30 days
+          working week is preferred. Currently on a B2B contract, with a 14 days
           notice period.
         </p>
       </section>
@@ -72,46 +72,62 @@
           class="profile__section profile__contact_data center_on_mobile"
         >
           <h2 class="h2">Contact</h2>
-          <a href="mailto:artur.jedrzejczak@gmail.com"
+          <a class="a a_animation" href="mailto:artur.jedrzejczak@gmail.com"
             ><img
               src="img/mail.svg"
               alt="mail icon"
               aria-hidden="true"
-              class="profile__contact_data__icon"
+              class="a__icon"
             />
             artur.jedrzejczak@gmail.com</a
           >
-          <a href="tel:+48664289281"
+          <a class="a a_animation" href="tel:+48664289281"
             ><img
               src="img/phone.svg"
               alt="phone icon"
               aria-hidden="true"
-              class="profile__contact_data__icon"
+              class="a__icon"
             />
             +48 664 289 281</a
           >
           <address>
             <a
+              class="a a_animation"
               href="https://duckduckgo.com/?q=pozna%C5%84&t=newext&atb=v347-1&ia=web&iaxm=about&iax=images"
               target="_blank"
             >
               <img
                 src="img/pin.svg"
                 alt="pin icon"
-                class="profile__contact_data__icon"
+                class="a__icon"
                 aria-hidden="true"
               />
               Poznan, Poland
             </a>
           </address>
-          <a href="https://github.com/aratur" target="_blank"
+          <a
+            class="a a_animation"
+            href="https://github.com/aratur"
+            target="_blank"
             ><img
               src="img/git.svg"
               alt="github icon"
-              class="profile__contact_data__icon"
+              class="a__icon"
               aria-hidden="true"
             />
             github.com/aratur</a
+          >
+          <a
+            class="a a_animation"
+            href="https://www.linkedin.com/in/artur-jedrzejczak/"
+            target="_blank"
+            ><img
+              src="img/linkedin-svgrepo-com.svg"
+              alt="github icon"
+              class="a__icon"
+              aria-hidden="true"
+            />
+            linkedin.com/in/artur-jedrzejczak</a
           >
         </section>
         <section class="profile__section skills">
@@ -120,8 +136,9 @@
             <tr>
               <th>Frontend:</th>
               <td>
-                React, React Router, React Query, Redux, JavaScript, TypeScript,
-                HTML, CSS, SASS, Jest, NodeJS, Electron
+                React, React Router, React Query, Redux Toolkit, React Testing
+                Library, Material UI, JavaScript, TypeScript, HTML, CSS, SASS,
+                Jest, NodeJS, Electron
               </td>
             </tr>
             <tr>
@@ -148,25 +165,33 @@
         </section>
         <section class="profile__section certification center_on_mobile">
           <h2 class="h2">Certification</h2>
-          <ul class="profile__ul">
+          <ul class="ul_style_inside">
             <li>Oracle DB SQL Certified Expert</li>
             <li>Oracle Certified Associate, Java SE 8 Programmer</li>
             <li>IBM Data Science Professional Certificate</li>
             <li>
-              Professional Scrum Master
+              <span>Professional Scrum Master</span>
               <span class="no_wrap">(PSM I)</span>
             </li>
           </ul>
         </section>
         <section class="profile__section qr_code">
-          <h2 class="h2">Online version of this CV</h2>
-          <img src="img/qr_code.svg" alt="qr code" />
-          <p>https://aj-cv.vercel.app/</p>
+          <h2 class="h2">See My Portfolio</h2>
+          <img src="img/qr_code_profile.svg" alt="qr code" />
+          <a class="a a_animation" href="https://aj-cv.vercel.app/portfolio"
+            ><img
+              src="img/portfolio.svg"
+              alt="mail icon"
+              aria-hidden="true"
+              class="a__icon"
+            />
+            aj-cv.vercel.app/portfolio</a
+          >
         </section>
       </div>
       <div class="profile__experience__container">
         <section class="profile__section profile__experience">
-          <h2 class="h2">Experience</h2>
+          <h2 class="h2 center_on_mobile">Experience</h2>
           <div class="profile__experience__header_flex">
             <h3 class="h3">07/2020 - Present</h3>
             <h3 class="h3">SENIOR DEVELOPER AT CAPCO Poland Sp. z o.o.</h3>
@@ -186,12 +211,14 @@
 
             <tr>
               <th>Technologies:</th>
-              <td>React, Redux, JavaScript, TypeScript, SASS, CSS, HTML</td>
+              <td>
+                React, Redux Toolkit, React Router, React Testing Library,
+                Material UI, JavaScript, TypeScript, SASS, CSS, HTML
+              </td>
             </tr>
           </table>
         </section>
         <section class="profile__section profile__experience">
-          <h2 class="h2">Experience</h2>
           <div class="profile__experience__header_flex">
             <h3 class="h3">07/2020 - Present</h3>
             <h3 class="h3">Personal fronted development mastery path</h3>
@@ -199,27 +226,27 @@
           <table>
             <tr>
               <th>Project:</th>
-              <td>Non-commercial projects done in a private time</td>
+              <td>Personal frontend projects</td>
             </tr>
             <tr>
               <th>Responsibilities:</th>
               <td>
-                To practice my skills, I implemented some projects that are
-                available on my github account. They have live versions (links
-                on github) so feel free to look through the code or see how it
-                works. (work that I normally do is not publicly available).
-                First two are from the time when I started working with React.
-                Recent ones are based on web designs from
-                <code><i>frontendmentor.io</i></code
-                >, using ready designs allowed me to focus more on the
-                implementation side of things.
+                To show some of my work I've built several sites that are
+                available on my portfolio page. This is because what I normally
+                do is not publicly available. They have live versions, and links
+                to the source code, so feel free to take a look. <br />
+                First are from the time when I started working with React.
+                Recent ones are based on Figma design files from
+                <code><i>frontendmentor.io</i></code> (using ready designs
+                allowed me to focus more on the implementation side of things).
               </td>
             </tr>
             <tr>
               <th>Technologies:</th>
               <td>
-                React, Redux, React Query, JavaScript, TypeScript, CSS, SASS,
-                HTML
+                React, Redux Toolkit, React Router, React Query, React Testing
+                Library, JavaScript, TypeScript, CSS, SASS, HTML, Material UI,
+                Vite, Parcel
               </td>
             </tr>
           </table>

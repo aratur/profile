@@ -1,0 +1,19 @@
+:root {
+  --fnt-primary: 'Roboto', sans-serif;
+  --fnt-header: 'Teko', sans-serif;
+}
+
+/* set the font, and uppercase for headers h1-4 */
+.h1,
+.h2,
+.h3,
+.h4 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--fnt-header);
+  color: var(--clr-dark-blue);
+}
+
+.h1 {
+  color: var(--clr-darker-blue);
+}

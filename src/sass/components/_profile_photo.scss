@@ -1,0 +1,61 @@
+/* ------------------------ */
+/* Profile phot formatting  */
+/* ------------------------ */
+.profile__photo {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  background-image: url('../img/profile_photo.png');
+  background-size: cover;
+  border: var(--width-photo-border) solid var(--clr-darker-blue);
+  border-radius: 10rem;
+  width: var(--width-photo);
+  /* centers photo above a sidebar */
+  margin-inline: calc(
+    (var(--width-sidebar) - var(--width-photo) - 1rem * 2) / 2
+  );
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 0 2rem var(--clr-dark-blue);
+  @media screen and (max-width: 350px) {
+    margin-inline: 0;
+  }
+}
+
+/* --------------------------- */
+/* accent around profile photo */
+/* --------------------------- */
+.profile__photo svg {
+  position: absolute;
+  inset: calc(0px - var(--width-photo-border)) 0 0
+    calc(0px - var(--width-photo-border));
+  width: var(--width-photo);
+  aspect-ratio: 1 / 1;
+  fill: transparent;
+  stroke-width: calc(var(--width-photo-border) / 2);
+  border-radius: 20rem;
+  stroke: var(--clr-accent);
+  rotate: 180deg;
+  stroke-dasharray: calc(3.14 * 240 * 0.9) 1000;
+  stroke-linecap: round;
+}
+
+/* --------------------------------------- */
+/* animate svg on hover over profile photo */
+/* --------------------------------------- */
+
+.profile__photo:is(:hover, :focus) svg {
+  animation: dash 2s ease-in-out 0ms 1 forwards;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 100 50;
+  }
+  75% {
+    stroke-dasharray: 40 calc(3.14 * 240px + 1px);
+  }
+  100% {
+    rotate: 180deg;
+    stroke-dasharray: calc(3.14 * 240px * 0.9) 1000;
+  }
+}

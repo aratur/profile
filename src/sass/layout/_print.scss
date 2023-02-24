@@ -42,19 +42,6 @@
     display: none;
   }
 
-  .qr_code {
-    display: block;
-
-    img {
-      max-width: 75%;
-      margin-left: 2rem;
-    }
-    :nth-child(3) {
-      margin-left: 4rem;
-      text-decoration: underline;
-    }
-  }
-
   .profile__footer {
     height: 800px;
     margin-left: 400px;

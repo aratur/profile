@@ -32,4 +32,13 @@ address {
   font-style: normal;
 }
 
-/* END OF CSS RESET */
+/* ------------------ */
+/* Reduced motion */
+/* ------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .frontend::after,
+  .profile__photo:is(:hover, :focus) svg {
+    animation: none !important;
+  }
+}

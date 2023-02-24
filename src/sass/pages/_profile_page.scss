@@ -11,107 +11,6 @@
   color: var(--clr-primary-font);
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 2rem 0 2rem 0;
-  padding: 0.5rem;
-  font-size: clamp(1.3em, 5vw, 1.7em);
-}
-
-.profile__ul {
-  list-style-position: inside;
-}
-
-.profile__header_text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.profile__header_background {
-  position: absolute;
-  inset: 4rem 0 0 0;
-  background-color: var(--clr-header-bar-background);
-  z-index: -200;
-  height: var(--width-header-background);
-  width: 100vw;
-}
-
-/* ------------------------ */
-/* Profile phot formatting  */
-/* ------------------------ */
-.profile__photo {
-  position: relative;
-  box-sizing: border-box;
-  padding: 0;
-  background-image: url('../img/profile_photo.png');
-  background-size: cover;
-  border: var(--width-photo-border) solid var(--clr-darker-blue);
-  border-radius: 10rem;
-  width: var(--width-photo);
-  /* centers photo above a sidebar */
-  margin-inline: calc(
-    (var(--width-sidebar) - var(--width-photo) - 1rem * 2) / 2
-  );
-  aspect-ratio: 1 / 1;
-
-  box-shadow: 0 0 2rem var(--clr-dark-blue);
-}
-
-/* --------------------------- */
-/* accent around profile photo */
-/* --------------------------- */
-.profile__photo svg {
-  position: absolute;
-  inset: calc(0px - var(--width-photo-border)) 0 0
-    calc(0px - var(--width-photo-border));
-  width: var(--width-photo);
-  aspect-ratio: 1 / 1;
-  fill: transparent;
-  stroke-width: calc(var(--width-photo-border) / 2);
-  border-radius: 20rem;
-  stroke: var(--clr-accent);
-  rotate: 180deg;
-  stroke-dasharray: calc(3.14 * 240 * 0.9) 1000;
-  stroke-linecap: round;
-}
-
-/* contact data links */
-.profile__contact_data a {
-  display: flex;
-  align-items: center;
-  line-height: 2.5em;
-}
-
-/* enforce the size of all icons and use of the aria tag on icons */
-.profile__contact_data__icon[aria-hidden='true'] {
-  margin-right: 1em;
-  height: 1.3em;
-  aspect-ratio: 1 /1;
-  border: 3px solid var(--clr-dark-blue);
-  padding: 0.3em;
-  border-radius: 1.3em;
-}
-
-/* set the font, and uppercase for headers h1-4 */
-.h1,
-.h2,
-.h3,
-.h4 {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: var(--fnt-header);
-  color: var(--clr-dark-blue);
-}
-
-.h1 {
-  color: var(--clr-darker-blue);
-}
-
 .name-text-color {
   color: var(--clr-accent);
   text-shadow: 0.05em 0.05em var(--clr-darker-blue);
@@ -132,11 +31,6 @@
   height: 0.2em;
   border-radius: 1em;
   background-color: var(--clr-accent);
-}
-
-// visible only in printed version
-.qr_code {
-  display: none;
 }
 
 .profile__cv_grid {
@@ -160,7 +54,6 @@ table th {
   width: 115px;
 }
 
-.profile__header,
 .profile__section {
   padding: 0.5rem;
 }
@@ -222,8 +115,14 @@ table th {
   grid-area: profile-summary;
 }
 
-.no_wrap {
-  white-space: nowrap;
+@media screen and (min-width: 951px) {
+  .profile__footer {
+    margin-top: 2rem;
+    margin-left: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 }
 
 @media screen and (max-width: 950px) {
@@ -240,16 +139,6 @@ table th {
   /* make sidebar background visible */
   :root {
     --clr-sidebar-background: transparent;
-  }
-
-  /* center blocks and contained text */
-  .profile__header {
-    justify-content: center;
-  }
-
-  .profile__header_text {
-    align-items: center;
-    text-align: center;
   }
 
   .center_on_mobile {
@@ -273,24 +162,16 @@ table th {
 }
 
 /*
-  for smaller screens
-*/
+    for smaller screens
+  */
 @media screen and (max-width: 350px) {
   .profile__body {
     min-width: 320px;
     overflow: auto;
   }
 
-  .profile__photo {
-    margin-inline: 0;
-  }
-
   :root {
     --width-photo-border: 12px;
     --width-photo: 220px;
-  }
-
-  .profile__header_background {
-    display: none;
   }
 }
