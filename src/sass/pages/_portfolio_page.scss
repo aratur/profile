@@ -30,7 +30,8 @@
   border: none;
   border-radius: 0.5rem;
   color: var(--clr-dark-blue);
-  filter: drop-shadow(0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.45));
+  // filter: drop-shadow(0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.45));
+  box-shadow: -0.5rem -0.5rem 1rem 0.5rem rgba(0, 0, 0, 0.25);
 }
 
 .grid__item_clip {
@@ -44,7 +45,6 @@
   width: 350px;
   max-width: calc(100vw - 2rem);
   aspect-ratio: 350 / 462;
-  border-radius: 0.5rem;
   filter: brightness(1);
   transform: scale(1);
   transition: 200ms ease-in;
