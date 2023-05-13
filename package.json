@@ -1,41 +1,21 @@
 {
   "name": "profile",
-  "version": "1.0.0",
-  "description": "profile page / CV",
-  "source": [
-    "src/index.html",
-    "src/portfolio/index.html"
-  ],
-  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "rm -rf dist && parcel",
-    "build": "rm -rf dist && parcel build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aratur/profile.git"
-  },
-  "author": "Artur Jedrzejczak",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aratur/profile/issues"
-  },
-  "homepage": "https://github.com/aratur/profile#readme",
-  "engines": {
-    "node": ">= 18"
-  },
-  "targets": {
-    "node": {
-      "sourceMap": true,
-      "optimize": true,
-      "scopeHoist": true
-    }
-  },
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.8.3",
-    "parcel": "^2.8.3"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "sass": "^1.58.3"
+    "@astrojs/mdx": "^0.19.1",
+    "@astrojs/preact": "^2.1.0",
+    "@astrojs/rss": "^2.4.1",
+    "@astrojs/sitemap": "^1.3.0",
+    "astro": "^2.4.1",
+    "preact": "^10.6.5",
+    "sass": "^1.62.1"
   }
 }
