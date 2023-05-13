@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Picture from './Picture.astro';
+import Button from '../../components/Button.astro';
+import Carousel from '../../components/Carousel/Carousel.tsx';
+type Props = CollectionEntry<'project'>['data'];
+
+const { id, name, mobilePNG, description, 
+    liveSite, mobileWEBP, repository, 
+    tableWEBP, tabletPNG, tags } = Astro.props;
+
+---
+
+<section class="project">
+    <div class="description">
+        <h2>{name}</h2>
+        <p>{description}</p>        
+        <Button url={repository} text="Repository" />
+        <Button url={liveSite} text="LiveSite" />
+    </div>
+    <Carousel id={id}>
+        <Picture slot="mobile" png={mobilePNG} webp={mobileWEBP} alt={name} />
+        <Picture slot="tablet" png={tabletPNG || mobilePNG} webp={tableWEBP} alt={name} />
+    </Carousel>
+</section>
+
+<style>
+.project{
+    display: flex;
+}
+</style>

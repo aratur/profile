@@ -1,0 +1,388 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import Navigation from '../../components/Navigation.astro';
+import Photo from './photo/photo.astro';
+import Header from './Header.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+    <body class="body">
+        <header class="profile__header">
+          <Navigation />
+          <Photo />
+          <Header />
+        </header>
+        <main class="profile__cv_grid">
+          <section class="profile__section profile-summary center_on_mobile">
+            <h2 class="h2">Profile summary</h2>
+            <p>
+              Developer with almost 15 years of experience working with different
+              technologies (over 2 years frontend) looking for a role as a
+              mid/senior developer. Motivated, with willingness to learn new
+              technologies and skills. Good team worker. Open to a B2B or an
+              employment contract, remote work. Due to personal reasons a 4 day
+              working week is preferred. Currently on a B2B contract, with a 14 days
+              notice period.
+            </p>
+          </section>
+          <div class="profile__sidebar__container">
+            <section
+              class="profile__section profile__contact_data center_on_mobile"
+            >
+              <h2 class="h2">Contact</h2>
+              <a class="a a_animation" href="mailto:artur.jedrzejczak@gmail.com"
+                ><img
+                  src="/assets/cv/mail.svg"
+                  alt="mail icon"
+                  aria-hidden="true"
+                  class="a__icon"
+                />
+                artur.jedrzejczak@gmail.com</a
+              >
+              <a class="a a_animation" href="tel:+48664289281"
+                ><img
+                  src="/assets/cv/phone.svg"
+                  alt="phone icon"
+                  aria-hidden="true"
+                  class="a__icon"
+                />
+                +48 664 289 281</a
+              >
+              <address>
+                <a
+                  class="a a_animation"
+                  href="https://duckduckgo.com/?q=pozna%C5%84&t=newext&atb=v347-1&ia=web&iaxm=about&iax=images"
+                  target="_blank"
+                >
+                  <img
+                    src="/assets/cv/pin.svg"
+                    alt="pin icon"
+                    class="a__icon"
+                    aria-hidden="true"
+                  />
+                  Poznan, Poland
+                </a>
+              </address>
+              <a
+                class="a a_animation"
+                href="https://github.com/aratur"
+                target="_blank"
+                ><img
+                  src="/assets/cv/git.svg"
+                  alt="github icon"
+                  class="a__icon"
+                  aria-hidden="true"
+                />
+                github.com/aratur</a
+              >
+              <a
+                class="a a_animation"
+                href="https://www.linkedin.com/in/artur-jedrzejczak/"
+                target="_blank"
+                ><img
+                  src="/assets/cv/linkedin-svgrepo-com.svg"
+                  alt="github icon"
+                  class="a__icon"
+                  aria-hidden="true"
+                />
+                linkedin.com/in/artur-jedrzejczak</a
+              >
+            </section>
+            <section class="profile__section skills">
+              <h2 class="h2">Skills</h2>
+              <table>
+                <tr>
+                  <th>Frontend:</th>
+                  <td>
+                    React, React Router, React Query, Redux Toolkit, React Testing
+                    Library, Material UI, JavaScript, TypeScript, HTML, CSS, SASS,
+                    Jest, NodeJS, Electron
+                  </td>
+                </tr>
+                <tr>
+                  <th>Databases:</th>
+                  <td>Oracle DB, MS SQL Server, MySQL, SQLite</td>
+                </tr>
+                <tr>
+                  <th>Tools:</th>
+                  <td>Git, GitHub, Bitbucket, Jira, DevTools, Postman, JMeter</td>
+                </tr>
+                <tr>
+                  <th>IDE:</th>
+                  <td>Visual Studio Code, Atom, IntelliJ</td>
+                </tr>
+              </table>
+            </section>
+            <section class="profile__section education center_on_mobile">
+              <h2 class="h2">Education</h2>
+              <p>
+                Poznań University of Economics<br />
+                Master's Degree, Information Systems<br />
+                [ 2004 - 2009 ]
+              </p>
+            </section>
+            <section class="profile__section certification center_on_mobile">
+              <h2 class="h2">Certification</h2>
+              <ul class="ul_style_inside">
+                <li>Oracle DB SQL Certified Expert</li>
+                <li>Oracle Certified Associate, Java SE 8 Programmer</li>
+                <li>IBM Data Science Professional Certificate</li>
+                <li>
+                  <span>Professional Scrum Master</span>
+                  <span class="no_wrap">(PSM I)</span>
+                </li>
+              </ul>
+            </section>
+            <section class="profile__section qr_code">
+              <h2 class="h2">See My Portfolio</h2>
+              <img src="/assets/cv/qr_code_profile.svg" alt="qr code" />
+              <a class="a a_animation" href="https://aj-cv.vercel.app/portfolio"
+                ><img
+                  src="/assets/cv/portfolio.svg"
+                  alt="mail icon"
+                  aria-hidden="true"
+                  class="a__icon"
+                />
+                aj-cv.vercel.app/portfolio</a
+              >
+            </section>
+          </div>
+          <div class="profile__experience__container">
+            <section class="profile__section profile__experience">
+              <h2 class="h2 center_on_mobile">Experience</h2>
+              <div class="profile__experience__header_flex">
+                <h3 class="h3">07/2020 - Present</h3>
+                <h3 class="h3">SENIOR DEVELOPER AT CAPCO Poland Sp. z o.o.</h3>
+              </div>
+              <table>
+                <tr>
+                  <th>Project:</th>
+                  <td>Back-office application for HSBC</td>
+                </tr>
+                <tr>
+                  <th>Responsibilities:</th>
+                  <td>
+                    Development of a fronted, banking applications for back-office
+                    employees.
+                  </td>
+                </tr>
+    
+                <tr>
+                  <th>Technologies:</th>
+                  <td>
+                    React, Redux Toolkit, React Router, React Testing Library,
+                    Material UI, JavaScript, TypeScript, SASS, CSS, HTML
+                  </td>
+                </tr>
+              </table>
+            </section>
+            <section class="profile__section profile__experience">
+              <div class="profile__experience__header_flex">
+                <h3 class="h3">07/2020 - Present</h3>
+                <h3 class="h3">Personal fronted development mastery path</h3>
+              </div>
+              <table>
+                <tr>
+                  <th>Project:</th>
+                  <td>Personal frontend projects</td>
+                </tr>
+                <tr>
+                  <th>Responsibilities:</th>
+                  <td>
+                    To show some of my work I've built several sites that are
+                    available on my portfolio page. This is because what I normally
+                    do is not publicly available. They have live versions, and links
+                    to the source code, so feel free to take a look. <br />
+                    First are from the time when I started working with React.
+                    Recent ones are based on Figma design files from
+                    <code><i>frontendmentor.io</i></code> (using ready designs
+                    allowed me to focus more on the implementation side of things).
+                  </td>
+                </tr>
+                <tr>
+                  <th>Technologies:</th>
+                  <td>
+                    React, Redux Toolkit, React Router, React Query, React Testing
+                    Library, JavaScript, TypeScript, CSS, SASS, HTML, Material UI,
+                    Vite, Parcel
+                  </td>
+                </tr>
+              </table>
+            </section>
+            <section class="profile__section profile__experience">
+              <div class="profile__experience__header_flex">
+                <h3 class="h3">06/2017 - 07/2020</h3>
+                <h3 class="h3">SENIOR DEVELOPER AT CAPCO Poland Sp. z o.o.</h3>
+              </div>
+              <table>
+                <tr>
+                  <th>Project:</th>
+                  <td>New internet banking for BNP Paribas Polska</td>
+                </tr>
+                <tr>
+                  <th>Responsibilities:</th>
+                  <td>
+                    Building migration engines for Identity Management System and
+                    Payments Implementation of micro-services in the area of system
+                    administration, payments
+                  </td>
+                </tr>
+                <tr>
+                  <th>Technologies:</th>
+                  <td>Oracle SQL, Java, Spring Boot, Hibernate, JMeter</td>
+                </tr>
+              </table>
+            </section>
+            <section class="profile__section profile__experience">
+              <div class="profile__experience__header_flex">
+                <h3 class="h3">11/2015 - 02/2017</h3>
+                <h3 class="h3">CONSULTANT at ACCENTURE sp. z o.o.</h3>
+              </div>
+              <table>
+                <tr>
+                  <th>Project:</th>
+                  <td>
+                    Building a new Digital Bank in France for La Banque Postale
+                    based on mBank.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Responsibilities:</th>
+                  <td>
+                    Designing an architecture of payments and cards for the new bank
+                    using a fit-gap approach.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Technologies:</th>
+                  <td>APIs, UML, software architecture</td>
+                </tr>
+              </table>
+            </section>
+            <section class="profile__section profile__experience">
+              <div class="profile__experience__header_flex">
+                <h3 class="h3">01/2015 - 07/2015</h3>
+                <h3 class="h3">CONSULTANT at ACCENTURE sp. z o.o.</h3>
+              </div>
+              <table>
+                <tr>
+                  <th>Project:</th>
+                  <td>Post-merger integration for mBank and BRE Bank</td>
+                </tr>
+                <tr>
+                  <th>Responsibilities:</th>
+                  <td>
+                    Implementation of Migration engine, Implementation of
+                    synchronization tool between SharePoint and MS Project to track
+                    live-progress and reporting.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Technologies:</th>
+                  <td>C#, MS SQL Server, MS Project, SharePoint</td>
+                </tr>
+              </table>
+            </section>
+            <section class="profile__section profile__experience">
+              <div class="profile__experience__header_flex">
+                <h3 class="h3">03/2013 - 12/2014</h3>
+                <h3 class="h3">CONSULTANT at ACCENTURE sp. z o.o.</h3>
+              </div>
+              <table>
+                <tr>
+                  <th>Project:</th>
+                  <td>
+                    Post-merger integration for Santander Bank Polska and Kredyt
+                    Bank
+                  </td>
+                </tr>
+                <tr>
+                  <th>Responsibilities:</th>
+                  <td>
+                    Implementation of Migration engine in Loans area including
+                    reconciliation.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Technologies:</th>
+                  <td>Ab Initio (ETL), MySQL</td>
+                </tr>
+              </table>
+            </section>
+            <section class="profile__section profile__experience">
+              <div class="profile__experience__header_flex">
+                <h3 class="h3">12/2010 - 11/2013</h3>
+                <h3 class="h3">ANALYST AT ACCENTURE Sp. z o.o.</h3>
+              </div>
+              <table>
+                <tr>
+                  <th>Project:</th>
+                  <td>Flexcube Core Banking system implementation for DNB Nord</td>
+                </tr>
+                <tr>
+                  <th>Responsibilities:</th>
+                  <td>
+                    Operational reports delivery in loans area. Development of
+                    post-migration reconciliation reports for corporate loans.
+                    Implementation of interface between the Lithuanian Central Bank.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Technologies:</th>
+                  <td>SQL Server, Oracle DB</td>
+                </tr>
+              </table>
+            </section>
+            <section class="profile__section profile__experience">
+              <div class="profile__experience__header_flex">
+                <h3 class="h3">08/2008 - 11/2010</h3>
+                <h3 class="h3">DEVELOPMENT SPECIALIST AT BZ WBK s.a.</h3>
+              </div>
+              <table>
+                <tr>
+                  <th>Project:</th>
+                  <td>Transfer Agent implementation for Arka Investment Funds</td>
+                </tr>
+                <tr>
+                  <th>Responsibilities:</th>
+                  <td>
+                    Implementation of reconciliation reporting, and business
+                    reporting
+                  </td>
+                </tr>
+                <tr>
+                  <th>Technologies:</th>
+                  <td>Oracle, Business Objects</td>
+                </tr>
+              </table>
+            </section>
+          </div>
+          <div class="profile__sidebar_background"></div>
+        </main>
+        <footer class="profile__footer">
+          <blockquote>
+            <small>
+              Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb
+              niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia
+              10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz.
+              1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady
+              (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób
+              fizycznych w związku z przetwarzaniem danych osobowych i w sprawie
+              swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE
+              (RODO).
+            </small>
+          </blockquote>
+          <blockquote>
+            <small
+              >Wyrażam zgodę na przetwarzanie moich danych osobowych w zakresie
+              przyszłych procesów rekrutacyjnych.</small
+            >
+          </blockquote>
+        </footer>
+</html>
