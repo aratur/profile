@@ -1,0 +1,17 @@
+---
+interface Props {
+    png: string,
+    webp?: string,
+    alt: string,
+}
+
+const {alt, png, webp } = Astro.props;
+---
+<picture>
+    { webp !== undefined ? <source srcset={webp} type="image/webp" /> : "" }
+    <img
+      class="picture"
+      src={png}
+      alt={alt}
+    />
+</picture>

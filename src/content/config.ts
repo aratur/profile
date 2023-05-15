@@ -23,10 +23,12 @@ const project = defineCollection({
     id: z.number(),
     name: z.string(),
     description: z.string(),
-    mobilePNG: z.string(),
-    mobileWEBP: z.string().optional(),
-    tabletPNG: z.string().optional(),
-    tableWEBP: z.string().optional(),
+    media: z.array(
+      z.object({
+        png: z.string(),
+        webp: z.string().optional(),
+      })
+    ),
     liveSite: z.string(),
     repository: z.string(),
     tags: z.array(z.string()),

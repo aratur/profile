@@ -1,0 +1,104 @@
+---
+import { toChildArray } from 'preact';
+import Picture from './Picture.astro';
+import './carousel.scss';
+
+interface Props { 
+  id: number;
+  media: { png: string; webp?: string | undefined; }[];
+  className: string; 
+}
+
+const { id, media, className } = Astro.props;
+const slideBy = Math.round((media.length + 0.5 ) * 100);
+const animationDuration = 4000 * media.length; 
+
+
+---
+<div class={"carousel " + className} data-id={id} data-state="running">  
+  <div class='carousel__items' data-id={id} 
+    style={`
+      transform: translateX(var(--base-transform, -${slideBy}%));
+      animation-duration: ${animationDuration}ms;
+      animation-play-state: var(--play-state);
+    `}>    
+    {
+      media.map( ({ png, webp }, index, arr) => <div class="carousel__item">
+          <Picture slot="mobile" png={png} webp={webp || png} alt={png} />  
+        </div> )
+    }
+  </div>
+</div>
+
+<script>      
+  // used in a closure to store information about disabled animations
+  const disabledAnimations= new Map<string, string>();
+
+  //function that disables animations
+  const toggleAnimationState = (id: string, element: Element | null, carousel: Element | null): void => {
+    if (!disabledAnimations.has(id)){
+        const style = element?.getAttribute('style') || '';
+        disabledAnimations.set(id, style);
+        element?.setAttribute("style", style + "; animation-play-state: paused;");
+        carousel?.setAttribute("data-state", "paused");
+    } else {
+      if (disabledAnimations.has(id)){
+        element?.setAttribute("style", disabledAnimations.get(id) || '');
+        carousel?.setAttribute("data-state", "running");
+        disabledAnimations.delete(id);
+      } else {
+        console.log("Failed to reset style property for item: ", id);
+      }
+    }
+  }
+
+// Use intersection observer to run animation each time when
+// element comes into viewport
+const options = {
+  root: null, // defaults to viewport
+  rootMargin: '-320px 0px -320px 0px',
+  // threshold: 1.0,
+}
+const callback = (entries:  IntersectionObserverEntry[]) => {
+  console.log("is callback");
+  entries.forEach((entry) => {
+    const { target, isIntersecting } = entry;
+    const { classList } = target;  
+    if (isIntersecting) {
+        console.log("is intersecting", JSON.stringify(classList));
+        if (classList.contains('carousel--paused')) {
+          classList.remove('carousel--paused');
+        } else {
+          console.warn('Element already contains "carousel--paused" class.');
+        }
+      } else {
+        classList.add('carousel--paused');
+    }
+  });
+};    
+let observer = new IntersectionObserver(callback, options);   
+
+    
+  // adds behavior for carousels
+  const carousels = document.querySelectorAll('.carousel');      
+  console.log("Len", carousels.length);    
+  carousels.forEach((carousel) => {
+    // read properties from each button
+    const id: string = carousel?.getAttribute('data-id') || '';
+    const carouselQuery = `.carousel__items[data-id="${id}"]`;    
+    const animationItem = document.querySelector(carouselQuery);      
+    // Add intersection observer
+    if (carousel) observer.observe(carousel);
+    // Add event listener
+    carousel?.addEventListener('click', () => {      
+      toggleAnimationState(id, animationItem, carousel);
+    })
+  })  
+
+
+    
+    
+
+
+</script>
+</script>

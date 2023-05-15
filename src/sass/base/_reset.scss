@@ -14,7 +14,7 @@ section {
 
 /* format links */
 a {
-  text-decoration: none;
+  // text-decoration: none;
   color: inherit;
 }
 
@@ -32,13 +32,8 @@ address {
   font-style: normal;
 }
 
-/* ------------------ */
-/* Reduced motion */
-/* ------------------ */
-
-@media (prefers-reduced-motion: reduce) {
-  .frontend::after,
-  .profile__photo:is(:hover, :focus) svg {
-    animation: none !important;
-  }
+// removes 24px margin at a bottom of a picture tag;
+picture {
+  display: block;
+  line-height: 0;
 }

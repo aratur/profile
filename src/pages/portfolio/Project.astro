@@ -1,31 +1,105 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import Picture from './Picture.astro';
-import Button from '../../components/Button.astro';
-import Carousel from '../../components/Carousel/Carousel.tsx';
+import Link from '../../components/Link.astro';
+import Carousel from '../../components/Carousel.astro';
 type Props = CollectionEntry<'project'>['data'];
 
-const { id, name, mobilePNG, description, 
-    liveSite, mobileWEBP, repository, 
-    tableWEBP, tabletPNG, tags } = Astro.props;
-
+const { id, name, description, 
+    liveSite,repository, 
+    media, tags } = Astro.props;
 ---
 
 <section class="project">
-    <div class="description">
-        <h2>{name}</h2>
-        <p>{description}</p>        
-        <Button url={repository} text="Repository" />
-        <Button url={liveSite} text="LiveSite" />
+    <Carousel id={id} media={media} className={"project__grid-are-bottom"}/>        
+    <div class={"project__description project__grid-are-top"}>
+        <h2 class="project__h2">{name}</h2>
+        <p>{description}</p>     
+        <div class="project__tags">
+            {
+                tags.map((tag) => <span class="project__tag">{tag}</span>)
+            }
+        </div>
+        <div class="project__links">
+            <Link url={repository} text="Repository" />
+            <Link url={liveSite} text="Live Site" />            
+        </div>   
     </div>
-    <Carousel id={id}>
-        <Picture slot="mobile" png={mobilePNG} webp={mobileWEBP} alt={name} />
-        <Picture slot="tablet" png={tabletPNG || mobilePNG} webp={tableWEBP} alt={name} />
-    </Carousel>
 </section>
 
-<style>
+<style is:global>
+.project * {    
+    outline: 1px solid hsla(240, 100%, 50%, .3);
+}
 .project{
+    position: relative;
+    display: grid;
+    grid-template-columns: 2rem 1fr 2rem;
+    grid-template-areas: '. top .'
+                         '. bottom .';
+    align-items: center;
+    justify-items: center;    
+    row-gap: 2rem;
+}   
+@media screen and (min-width: 1024px){
+    .project{
+        grid-template-columns: 0 1fr 1fr 0;
+        grid-template-areas: '. top bottom .';  
+        column-gap: 2rem;
+        row-gap: 0;
+    }   
+}
+
+.project::after {
+    content: '';
+    position: absolute;
+    left: -50vw;
+    top: 10%;
+    width: 150vw;
+    height: 80%;    
+    transform: skewY(-2.5deg);
+    z-index: -100;
+    
+}
+
+.project__description {
+    width: min(100%, 40rem);
+    display: grid;
+    row-gap: 0.5rem;
+    background-color: hsla(0, 0%, 100%, .4);
+    border-radius: 0.5rem;
+    box-shadow: .5rem .5rem 1rem black;
+    padding: 1rem;
+}
+
+.project__tags {
     display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    column-gap: 1rem;    
+    row-gap: 1rem;
+}
+
+.project__tag {    
+    background-color: hsla(0, 0%, 100%, .8);
+    border: 1px solid black;
+    padding-block: .25rem;
+    padding-inline: .5rem;
+    cursor: pointer;    
+    white-space: nowrap;
+}
+
+.project__links{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.project__grid-are-top {
+    grid-area: top;
+}
+
+.project__grid-are-bottom {
+    grid-area: bottom;
 }
 </style>

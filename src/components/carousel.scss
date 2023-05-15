@@ -1,0 +1,104 @@
+.carousel {
+  --size--desktop: 512px;
+  --size--mobile: 320px;
+  --column-gap--desktop: 0rem;
+  --column-gap--mobile: 0rem;
+  --column-gap: var(--column-gap--mobile);
+  --size: var(--size--mobile);
+  position: relative;
+  overflow: hidden;
+  --play-state: running;
+}
+
+.carousel {
+  max-width: var(--size);
+}
+
+.carousel {
+  height: var(--size);
+}
+
+.carousel__item img {
+  position: relative;
+  width: 25rem;
+  height: 25rem;
+  left: -2rem;
+  top: -2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .carousel {
+    --size: var(--size--desktop);
+    --column-gap: var(--column-gap--desktop);
+  }
+  .carousel__item img {
+    width: 39rem;
+    height: 39rem;
+    left: -3rem;
+    top: -3rem;
+  }
+}
+
+.carousel__items {
+  display: flex;
+  flex-direction: row;
+  column-gap: var(--column-gap);
+  animation: carousel-animation 3000ms linear 0ms infinite reverse backwards;
+}
+
+.carousel:hover {
+  // --play-state: paused;
+  cursor: pointer;
+}
+
+.carousel::after {
+  content: '';
+  width: 40%;
+  height: 40%;
+  border: 8px solid black;
+  border-radius: 50%;
+  background-color: hsla(0, 0%, 100%, 1);
+  box-shadow: 0 0 2rem 2rem hsla(0, 0%, 100%, 0.7);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  z-index: 2000;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+.carousel:hover::after {
+  opacity: 1;
+}
+.carousel[data-state='running']:hover::after {
+  background-image: url('/assets/portfolio/pause.svg');
+}
+.carousel[data-state='paused']:hover::after {
+  background-image: url('/assets/portfolio/play.svg');
+}
+
+@media (prefers-reduced-motion) {
+  /* pause animation and reset position of carousel  */
+  .carousel__items {
+    --play-state: paused;
+    --base-transform: 0% !important;
+  }
+  .carousel::after {
+    display: none;
+  }
+  .carousel:hover {
+    cursor: unset;
+  }
+}
+
+.carousel--paused {
+  --play-state: paused;
+}
+
+@keyframes carousel-animation {
+  to {
+    transform: translateX(0%);
+  }
+}

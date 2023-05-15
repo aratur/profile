@@ -1,0 +1,24 @@
+---
+interface Props {
+    url: string,
+    text: string,
+}
+const { url, text } = Astro.props;
+---         
+<a class="btn-grad" href={url} target="_blank">{text}</a>
+       
+       
+<style>
+.btn-grad {     
+    padding-inline: .5rem;
+    padding-block: .25rem;
+    transition: 0.5s;
+    background-size: 200% auto;
+    display: block;
+    width: max-content;
+    font-weight: ;
+}  
+.btn-grad:hover {    
+    color: #fff;    
+}
+</style>
