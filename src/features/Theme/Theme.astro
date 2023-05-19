@@ -14,7 +14,7 @@
     themeButton?.addEventListener('click', () => {
         const theme = document.querySelector('.theme');
         theme?.classList.toggle('theme--switch');
-        root?.classList.toggle('dark');
+        root?.classList.toggle('light');
         
     })
 </script>
@@ -22,17 +22,18 @@
 <style is:global>
 
 :root {
-    --clr-bg-primary: white;
-    --clr-font-primary: black;
-	--clr-bg-secondary: black;
-	--clr-font-secondary: white;
-}
-
-.dark {
     --clr-bg-primary: black;
     --clr-font-primary: white;
 	--clr-bg-secondary: white;
 	--clr-font-secondary: black;
+    
+}
+
+.light {
+    --clr-bg-primary: white;
+    --clr-font-primary: black;
+	--clr-bg-secondary: black;
+	--clr-font-secondary: white;
 }
 
 .theme {

@@ -12,10 +12,19 @@
 
 .carousel__item {
   position: absolute;
-  left: 0;
-  top: 0;
+  width: 112%;
+  left: -6%;
+  top: -6%;
   opacity: 1;
   transition: opacity 300ms;
+}
+
+@media screen and (min-width: 1024px) {
+  .carousel__item {
+    width: 120%;
+    left: -10%;
+    top: -10%;
+  }
 }
 
 .carousel__item--hide {
