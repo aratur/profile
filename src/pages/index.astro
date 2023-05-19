@@ -7,6 +7,7 @@ import Projects from '../features/Projects/Projects.astro';
 import Filter from '../features/Filter/Filter.astro';
 import { getCollection } from 'astro:content';
 import '../sass/base/css_reset.scss';
+import Theme from '../features/Theme/Theme.astro';
 
 const projects = (await getCollection('project')).sort((item1, item2) => item1.data.id - item2.data.id );
 const tags = projects.map((project) => project.data.tags);
@@ -24,6 +25,7 @@ const uniqueTags = tags.flat().reduce<string[]>((reducer, current) => {
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>		
+		<Theme />
 		<main>
 			<Hero />
 			<Filter tags={tags} uniqueTags={uniqueTags} noOfProjects={projects.length} />
@@ -34,14 +36,14 @@ const uniqueTags = tags.flat().reduce<string[]>((reducer, current) => {
 </html>
 
 <style is:global>
-html {
-	color-scheme: light dark;	
+html {	
 	font-family: 'League Spartan', sans-serif;
 	font-weight: 500;
 	font-size: 1rem;
 	line-height: 1.5;
-	background-color: black;
+	background-color: var(--clr-bg-primary);
 }
+
 h1, h2 {	
 	 font-family: 'Russo One', sans-serif;;
 	font-style: normal;
@@ -67,10 +69,11 @@ h2 {
 }
 
 main {
-    padding-top: 4rem;	
+    padding-top: 1rem;	
 	display: flex;
 	flex-direction: column;
 	row-gap: 8rem;
+	overflow: hidden;
 }
 
 </style>

@@ -5,40 +5,55 @@ interface Props {
 const { tag } = Astro.props;
 ---
 
-<span class="tag">{tag}</span>
+<span class="tag"><span class="tag__text">{tag}</span><svg class="close" xmlns="http://www.w3.org/2000/svg" width="17.828" height="17.828">
+    <path class=tag__path" d="m2.828 17.828 6.086-6.086L15 17.828 17.828 15l-6.086-6.086 6.086-6.086L15 0 8.914 6.086 2.828 0 0 2.828l6.085 6.086L0 15l2.828 2.828z"/></svg></span>
 
 
 <style is:global>
 .tag {    
     position: relative;
-    background-color: hsla(0, 0%, 100%);
-    border: 2px solid grey;
+    background-color: var(--clr-bg-secondary);
+    color: var(--clr-font-secondary);
+    border: 2px solid grey;    
+    cursor: pointer;    
+    transition: background-color 300ms, color 300ms;    
+    display: flex;
+    flex-direction: row;
+    flex-basis: auto;
+}
+.tag__text {
+    white-space: nowrap;
+    flex-grow: 1;
     padding-block: .25rem;
     padding-inline: .5rem;
 	border-radius: .25rem;
-    cursor: pointer;    
-    white-space: nowrap;
-    transition: background-color 300ms, color 300ms;
-}
-.tag:hover {
-    background-color: black;
-    color: white;
 }
 
-.tag__active {    
-    padding-right: 2rem;
+.tag:hover {
+    background-color: var(--clr-font-secondary);
+    color: var(--clr-bg-secondary);
 }
-.tag__active::after {
-    content: '';
-    position:absolute;
-    background-color: black;
-    background-image: url('/assets/portfolio/close.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    right: 0;
-    top: 0;
+
+.close {
+    display: none;
+    fill: var(--clr-font-secondary);
+    background-color: var(--clr-bg-secondary);
     width: 1.5rem;
     height: 100%;
-    /* border: 2px solid orange; */
+    flex-grow: 0;
+    padding-top: .4rem;
+    padding-left: .2rem;
+}
+
+.tag__active .close {
+    display:block;   
+}
+
+@media screen and (min-width: 1024px) {
+    .close {
+        padding-top: .5rem;
+        padding-left: .3rem;
+}
+    }
 }
 </style>
