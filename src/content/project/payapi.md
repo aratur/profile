@@ -1,6 +1,6 @@
 ---
 id: 5
-name: 'Pay API Multi-page with branding'
+name: 'Marketing website'
 description: 'The task involves creating a marketing website project that includes custom form validation. The project consists of four pages and primarily emphasizes the use of HTML and CSS skills, with some basic implementation of React components.'
 media:
   [

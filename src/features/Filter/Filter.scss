@@ -4,6 +4,7 @@
   top: 0;
   max-width: 70rem;
   padding: 1rem 1rem 0 1rem;
+  background-color: var(--clr-bg-primary);
   margin: 0 auto;
 }
 
@@ -14,19 +15,6 @@
   flex-wrap: wrap;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
-}
-
-.filter__summary::after,
-.filter::after {
-  position: absolute;
-  content: '';
-  width: 120vw;
-  height: 100%;
-  top: 0vw;
-  left: -10vw;
-  background-color: var(--clr-bg-primary);
-  opacity: 0.8;
-  z-index: -10;
 }
 
 .filter__container .tag {
@@ -50,9 +38,13 @@
   bottom: -3.1rem;
   display: flex;
   flex-direction: row;
+  background-color: var(--clr-bg-primary);
+  width: 100%;
+  left: 0;
   align-items: center;
   column-gap: 2rem;
-  padding: 0.5rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
 }
 .filter__summary-item {
   background: none;

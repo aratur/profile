@@ -1,6 +1,6 @@
 ---
 id: 1
-name: 'Donate'
+name: 'Donation form'
 description: 'Form with custom components dealing with money input behavior and dates manipulation. Responsive and based on a Figma design. For internationalization React i18next framework was used in this project.'
 media:
   [

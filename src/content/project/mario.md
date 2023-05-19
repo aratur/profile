@@ -1,6 +1,6 @@
 ---
 id: 4
-name: 'Mario'
+name: 'Mario Snake'
 description: 'A classic snake game with art from Mario. Project includes a custom implementation of a global store (using useRef and useContext) at the same time keeps the number of React re-renders to minimum.'
 media: [{
     png: '/assets/portfolio/mario/mobile.png',

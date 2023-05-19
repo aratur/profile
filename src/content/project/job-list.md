@@ -1,6 +1,6 @@
 ---
 id: 7
-name: 'Job list'
+name: 'Filter job list'
 description: 'Filter job listings based on the categories. This is a fairly simple project using core React features like useState, useCallback, useMemo, useEffect.'
 media:
   [
