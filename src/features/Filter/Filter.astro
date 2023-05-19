@@ -1,0 +1,137 @@
+---
+import Tag from './Tag.astro';
+import './Filter.scss';
+interface Props {
+    tags: string[][];
+    uniqueTags: string[];
+    noOfProjects: number;
+}
+
+const { tags, uniqueTags, noOfProjects } = Astro.props;
+
+---
+<div class="filter">
+    <h2 class="filter__h2">Filter projects</h2>
+    <div class="filter__container">
+        {
+            uniqueTags.map((tag) => <Tag tag={tag}/>)
+        } 
+    </div>
+    <div class="filter__summary">        
+        <span class="filter__summary-item filter__count">{noOfProjects}/{noOfProjects}</span>
+        <button type="button" class="filter__summary-item filter__button filter__hide">hide</button>
+        <button type="button" class="filter__summary-item filter__button filter__clear">clear</button>
+    </div>       
+    
+</div>
+
+
+<script>
+// Get all tag elements
+const tags = document.querySelectorAll('.tag');
+
+// Set tag Names, and create a map of tags and their Elements in the DOM;
+const tagNames: string[] = [];
+const tagsTagMap = new Map<string, Element[]>();
+tags.forEach((tag)=> {
+    let tagName = tag.textContent || '';
+    if (tagName.length > 0) {
+        tagName = tagName.trim();
+        if (!tagNames.some((v)=> v === tagName)){
+            tagNames.push(tagName);
+        }
+        if(tagsTagMap.has(tagName)) {
+            const mappedTags = tagsTagMap.get(tagName)!;
+            tagsTagMap.set(tagName, [...mappedTags, tag]);
+        } else {
+            tagsTagMap.set(tagName, [tag]);
+        }
+    }
+});
+
+// Create a map of all tags with their cards' Elements in the DOM
+const cardTagMap = new Map<Element, string[]>();
+const cards = document.querySelectorAll('.project');
+cards.forEach((card) => {
+    const cardTags = card.querySelectorAll('.tag');
+    cardTags.forEach((cardTag) => {
+        let tagName = cardTag.textContent || '';
+        if (tagName.length > 0) {
+            tagName = tagName.trim();
+            if(cardTagMap.has(card)) {
+                const mappedTags = cardTagMap.get(card)!;
+                cardTagMap.set(card, [...mappedTags, tagName]);
+            } else {
+                cardTagMap.set(card, [tagName]);
+            }
+        }
+    })
+});
+
+// update count of cards that were filtered
+const updateCount = (visible: number, total: number) => {
+    const countElement = document.querySelector('.filter__count');
+    if (countElement) countElement.textContent = `${visible}/${total}`;
+}
+
+const fiteredTags = new Map<string, boolean>();
+const applyFilter = (): void => {
+    let visibleCount = 0;
+    const filter = Array.from(fiteredTags.keys());
+    cardTagMap.forEach((tagNames, card) => {
+        if(filter.every((tagName) => tagNames.some((t) => t === tagName))) {
+            card.classList.remove('remove');
+            visibleCount += 1;
+        } else {
+            card.classList.add('remove');            
+        }    
+    });
+    updateCount(visibleCount, cardTagMap.size);
+}
+
+// Add click event listeners to each tag element
+tags.forEach(tag => {
+  tag.addEventListener('click', () => {	
+    let tagName = tag.textContent || '';
+    tagName = tagName.trim();
+    const isActive = fiteredTags.get(tagName);
+    if (isActive) {
+        fiteredTags.delete(tagName);
+        tagsTagMap.get(tagName)
+            ?.forEach((tagElement) => tagElement.classList.remove('tag__active'))
+    } else {
+        fiteredTags.set(tagName, true);    
+        tagsTagMap.get(tagName)
+            ?.forEach((tagElement) => tagElement.classList.add('tag__active'))
+    }
+    applyFilter();
+  });
+});
+
+// hides tags in Filter section
+const hideElement = document.querySelector('.filter__hide');
+if (hideElement) {
+    hideElement.addEventListener('click', () => {
+        const filterContainer = document.querySelector('.filter__container');
+        // toggle hide / show
+        if(hideElement.textContent === 'hide') {
+            hideElement.textContent = 'show';
+            filterContainer?.classList.add('hide')
+        } else {
+            hideElement.textContent = 'hide';
+            filterContainer?.classList.remove('hide')
+        }
+    });
+}
+
+// Removes filters
+const clearElement = document.querySelector('.filter__clear');
+if (clearElement) {
+    clearElement.addEventListener('click', () => {
+        fiteredTags.clear();
+        tagsTagMap.forEach((tagElements, _) => tagElements.forEach((tagElement) => tagElement.classList.remove('tag__active')))
+        applyFilter();
+    });
+}
+
+</script>

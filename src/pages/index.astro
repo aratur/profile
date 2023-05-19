@@ -2,41 +2,45 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import Navigation from '../components/Navigation.astro';
-import Hero from './portfolio/Hero.astro';
-import Project from './portfolio/Project.astro';
+import Hero from '../features/Hero/Hero.astro';
+import Projects from '../features/Projects/Projects.astro';
+import Filter from '../features/Filter/Filter.astro';
 import { getCollection } from 'astro:content';
-import { map } from 'astro/zod';
+import '../sass/base/css_reset.scss';
 
 const projects = (await getCollection('project')).sort((item1, item2) => item1.data.id - item2.data.id );
+const tags = projects.map((project) => project.data.tags);
+const uniqueTags = tags.flat().reduce<string[]>((reducer, current) => {
+	if(reducer.includes(current)) {
+		return reducer;
+	} else {
+		reducer.push(current);
+		return reducer;
+	}}, []);
 ---
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
-		<Navigation />
+	<body>		
 		<main>
 			<Hero />
-			<div class="projects">
-			{
-				projects.map(({ data }) => <Project {...data} />)
-			}
-			</div>
+			<Filter tags={tags} uniqueTags={uniqueTags} noOfProjects={projects.length} />
+			<Projects projects={projects} />
 		</main>
 		<Footer />
 	</body>
 </html>
-
 
 <style is:global>
 html {
 	color-scheme: light dark;	
 	font-family: 'League Spartan', sans-serif;
 	font-weight: 500;
-	font-size: 1.25rem;
+	font-size: 1rem;
 	line-height: 1.5;
+	background-color: black;
 }
 h1, h2 {	
 	 font-family: 'Russo One', sans-serif;;
@@ -51,6 +55,9 @@ h2 {
 }
 
 @media screen and (min-width: 1024px) {
+	html {
+		font-size: 1.25rem;
+	}
 	h1 {
 		font-size: 3rem;		
 	}
@@ -61,20 +68,9 @@ h2 {
 
 main {
     padding-top: 4rem;	
-}    
-.projects {
-	display: grid;
-	row-gap: 4rem;
-	margin-block: 4rem;
-	margin-inline: auto;
-	max-width: 70rem;	
-}
-
-.project:nth-child(even)::after {
-	background-image: linear-gradient( 109.6deg,  rgba(9,9,121,1) 11%, rgba(144,6,161,1) 54%, rgba(0,212,255,1) 100% );
-}
-.project:nth-child(odd)::after {
-	background-image: linear-gradient( 298.6deg,  rgba(9,9,121,1) 0%, rgba(144,6,161,1) 25%, rgba(0,212,255,1) 80% );
+	display: flex;
+	flex-direction: column;
+	row-gap: 8rem;
 }
 
 </style>

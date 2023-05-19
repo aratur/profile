@@ -1,7 +1,7 @@
 ---
 id: 2
 name: 'Four in a row game'
-description: 'Responsive four in a row game.'
+description: "Fully responsive implementation of a Connect Four game, based on Figma designs. Play against other player or vs CPU. State management implemented using React's Context. Lazy loading used for sub-pages in routing configuration."
 media:
   [
     {
@@ -29,8 +29,9 @@ tags:
     'React Router',
     'TypeScript',
     'Testing Library',
+    'SASS',
+    'useContext',
     'Vite',
-    'SASS/SCSS',
   ]
 ---
 

@@ -1,0 +1,88 @@
+---
+import { toChildArray } from 'preact';
+import Picture from './Picture.astro';
+import './carousel.scss';
+
+interface Props { 
+  id: number;
+  media: { png: string; webp?: string | undefined; }[];
+  className: string; 
+}
+const { id, media, className } = Astro.props;
+---
+<div class={"carousel " + className} data-id={id} data-state="running">  
+    {
+      media.map( ({ png, webp }, index, arr) => <div 
+      class="carousel__item carousel__item--hide carousel__item--display-none" data-id={id} >
+          <Picture slot="mobile" png={png} webp={webp || png} alt={png} />  
+        </div> )
+    }
+</div>
+
+<script>
+
+const intervals = new Map<string, NodeJS.Timer>();
+const wait = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
+
+interface Cancel { id: string };
+// callback for animating flashcards
+const flashcards = (id: string): [number, (cancel: Cancel) => Promise<void>] => {
+  const items = document.querySelectorAll(`.carousel__item[data-id="${id}"]`);
+  const count = items.length;
+  const hideClassName = 'carousel__item--hide';
+  const noDisplayClassName = 'carousel__item--display-none';
+  const flashFunction = async (cancel: Cancel) => {        
+        for(let item of items) {
+          const { classList } = item;
+          if(classList.contains(hideClassName) && intervals.has(cancel.id)) {
+              // console.log(new Date().getMilliseconds(), cancel);              
+              classList.remove(hideClassName);
+              let count = 0;
+              for(let i=0; i<14; i+=1){
+                if (intervals.has(cancel.id)) {
+                  await wait(200);
+                }
+                count += 1;
+              }
+              classList.add(hideClassName);
+              await wait(200);
+          }
+        }
+      }
+  return [count, flashFunction];
+}
+
+// Use intersection observer to run animation each time when
+// element comes into viewport
+const options = {
+  root: null, // defaults to viewport
+  rootMargin: '-200px 0px -200px 0px',
+  // threshold: 1.0,
+}
+const callback = (entries:  IntersectionObserverEntry[]) => {  
+  entries.forEach((entry) => {
+    const { target, isIntersecting } = entry;
+    const id: string = target?.getAttribute('data-id') || '';
+    const [count, flashFunction ] = flashcards(id);
+    const cancel: Cancel = { id };
+    if (isIntersecting) {
+      const interval = setInterval(() => flashFunction(cancel), 3050 * count);      
+      intervals.set(id, interval);      
+      flashFunction(cancel);
+    } else {        
+      clearInterval(intervals.get(id));   
+      intervals.delete(id);
+    }
+  });
+};    
+
+let observer = new IntersectionObserver(callback, options);   
+    
+// adds behavior for carousels
+const carousels = document.querySelectorAll('.carousel');      
+ 
+carousels.forEach((carousel) => {
+  const id: string = carousel?.getAttribute('data-id') || '';
+  if (carousel) observer.observe(carousel);
+})  
+</script>

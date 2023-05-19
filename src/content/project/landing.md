@@ -1,7 +1,7 @@
 ---
 id: 8
 name: 'Landing page'
-description: 'A responsive landing page in HTML in CSS only.'
+description: 'A responsive landing page in HTML and CSS only. Static code generation done using astro.build, at the same time providing convenient way of splitting reusable code components without a need for heavier frameworks.'
 media:
   [
     {
@@ -9,8 +9,8 @@ media:
       webp: '/assets/portfolio/landing/mobile.webp',
     },
     {
-      png: '/assets/portfolio/landing/tablet.png',
-      webp: '/assets/portfolio/landing/tablet.webp',
+      png: '/assets/portfolio/landing/tablet_3.png',
+      webp: '/assets/portfolio/landing/tablet_3.webp',
     },
     {
       png: '/assets/portfolio/landing/tablet_2.png',
@@ -19,7 +19,7 @@ media:
   ]
 liveSite: 'https://frontend-mentor-landing-page-nine.vercel.app/'
 repository: 'https://github.com/aratur/frontend-mentor-landing-page'
-tags: ['HTML', 'CSS', 'no JS', 'Responsive']
+tags: ['HTML', 'CSS', 'astro']
 ---
 
 TODO: write a dedicated description post

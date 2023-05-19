@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Project from './Project.astro';
+interface Props {
+    projects: CollectionEntry<"project">[];
+}
+const { projects } = Astro.props;
+---
+<div class="projects">
+    <h2 class="projects__h2">List of projects</h2>
+    {
+        projects.map(({ data }) => <Project {...data} />)
+    }
+</div>
+
+<style is:global>
+.projects {
+    position: relative;
+	display: grid;
+	row-gap: 4rem;
+	margin-inline: auto;
+    /* overflow-x: hidden;     */
+	max-width: 70rem;
+}
+.projects__h2 {
+    position: absolute;
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -4rem;
+    font-size: 2rem;
+    white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+    .projects__h2 {
+        left: 3rem;
+        transform: translateX(0);
+        font-size: 2.5rem;
+    }
+}
+
+.project:nth-child(even)::after {
+	background-image: linear-gradient( 109.6deg,  rgba(9,9,121,1) 11%, rgba(144,6,161,1) 54%, rgba(0,212,255,1) 100% );
+}
+.project:nth-child(odd)::after {
+	background-image: linear-gradient( 298.6deg,  rgba(9,9,121,1) 0%, rgba(144,6,161,1) 25%, rgba(0,212,255,1) 80% );
+}
+</style>

@@ -1,7 +1,7 @@
 ---
 id: 4
 name: 'Mario'
-description: 'Game'
+description: 'A classic snake game with art from Mario. Project includes a custom implementation of a global store (using useRef and useContext) at the same time keeps the number of React re-renders to minimum.'
 media: [{
     png: '/assets/portfolio/mario/mobile.png',
     webp: '/assets/portfolio/mario/mobile.webp'
@@ -14,7 +14,7 @@ media: [{
 
 liveSite: 'https://mario-snake.vercel.app/'
 repository: 'https://github.com/aratur/mario-snake'
-tags: ['React', 'Redux Toolkit', 'Redux thunk', 'TypeScript', 'W3.CSS']
+tags: ['React', 'TypeScript', 'Testing Library', 'useContext', 'W3.CSS', 'Vite']
 ---
 
 TODO: write a dedicated description post

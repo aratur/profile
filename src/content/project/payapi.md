@@ -1,7 +1,7 @@
 ---
 id: 5
 name: 'Pay API Multi-page with branding'
-description: 'Multi-page responsive web application with forms.'
+description: 'The task involves creating a marketing website project that includes custom form validation. The project consists of four pages and primarily emphasizes the use of HTML and CSS skills, with some basic implementation of React components.'
 media:
   [
     {
@@ -27,7 +27,7 @@ media:
   ]
 liveSite: 'https://frontendmentor-payapi-multi-page-website.vercel.app/'
 repository: 'https://github.com/aratur/frontendmentor-payapi-multi-page-website'
-tags: ['React', 'React Router', 'TypeScript', 'Custom Components', 'SASS/SCSS']
+tags: ['React', 'React Router', 'TypeScript', 'SASS']
 ---
 
 TODO: write a dedicated description post
