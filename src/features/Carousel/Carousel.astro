@@ -21,30 +21,30 @@ const { id, media, className } = Astro.props;
 
 <script>
 
-const intervals = new Map<string, NodeJS.Timer>();
+let intervals = new Map<string, NodeJS.Timer>();
 const wait = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
 
-interface Cancel { id: string };
+interface ImageReference { id: string };
 // callback for animating flashcards
-const flashcards = (id: string): [number, (cancel: Cancel) => Promise<void>] => {
+const flashcards = (id: string): [number, (reference: ImageReference) => Promise<void>] => {
   const items = document.querySelectorAll(`.carousel__item[data-id="${id}"]`);
   const count = items.length;
   const hideClassName = 'carousel__item--hide';
-  const noDisplayClassName = 'carousel__item--display-none';
-  const flashFunction = async (cancel: Cancel) => {        
+  const flashFunction = async (reference: ImageReference) => {        
         for(let item of items) {
-          const { classList } = item;
-          if(classList.contains(hideClassName) && intervals.has(cancel.id)) {
-              // console.log(new Date().getMilliseconds(), cancel);              
+          const { classList } = item as HTMLImageElement;
+          if(classList.contains(hideClassName) && intervals.has(reference.id)) {
               classList.remove(hideClassName);
               let count = 0;
-              for(let i=0; i<14; i+=1){
-                if (intervals.has(cancel.id)) {
-                  await wait(200);
+              for(let i=0; i<27; i+=1){
+                // will lead to the item being hidden faster when cancelled
+                if (intervals.has(reference.id)) {
+                  await wait(100);
                 }
                 count += 1;
               }
               classList.add(hideClassName);
+              // align with the duration of the animation
               await wait(200);
           }
         }
@@ -64,11 +64,11 @@ const callback = (entries:  IntersectionObserverEntry[]) => {
     const { target, isIntersecting } = entry;
     const id: string = target?.getAttribute('data-id') || '';
     const [count, flashFunction ] = flashcards(id);
-    const cancel: Cancel = { id };
+    const reference: ImageReference = { id };
     if (isIntersecting) {
-      const interval = setInterval(() => flashFunction(cancel), 3050 * count);      
+      const interval = setInterval(() => flashFunction(reference), 3150 * count);      
       intervals.set(id, interval);      
-      flashFunction(cancel);
+      flashFunction(reference);
     } else {        
       clearInterval(intervals.get(id));   
       intervals.delete(id);
@@ -76,7 +76,19 @@ const callback = (entries:  IntersectionObserverEntry[]) => {
   });
 };    
 
-let observer = new IntersectionObserver(callback, options);   
+let observer = new IntersectionObserver(callback, options);  
+
+// after loosing visiblity and re-entering animations start to overlap
+// they one loop needs to be terminated to avoid that
+// as far as I was able to debug this issue, it is not due to Interval or IntersectionObserver events;
+// rather something to do with applying css class changes and browser repainting
+document.addEventListener("visibilitychange", () => {
+  if(document.visibilityState === "hidden") {
+    const copy = new Map(intervals.entries());
+    intervals.clear();
+    setTimeout(() => {intervals = copy;}, 200);
+  }
+})
     
 // adds behavior for carousels
 const carousels = document.querySelectorAll('.carousel');      

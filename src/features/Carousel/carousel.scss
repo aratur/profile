@@ -1,7 +1,7 @@
 .carousel {
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 80vmin;
   aspect-ratio: 1 / 1;
 }
 
@@ -12,14 +12,15 @@
 
 .carousel__item {
   position: absolute;
-  width: 112%;
-  left: -6%;
-  top: -6%;
+  width: 80vmin;
   opacity: 1;
-  transition: opacity 300ms;
+  transition: opacity 200ms;
 }
 
 @media screen and (min-width: 1024px) {
+  .carousel {
+    width: 100%;
+  }
   .carousel__item {
     width: 120%;
     left: -10%;

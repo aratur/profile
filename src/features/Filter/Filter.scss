@@ -42,9 +42,17 @@
   width: 100%;
   left: 0;
   align-items: center;
+  justify-content: center;
   column-gap: 2rem;
   padding-inline: 1rem;
   padding-block: 0.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .filter__summary {
+    justify-content: start;
+    left: 3rem;
+  }
 }
 .filter__summary-item {
   background: none;
@@ -92,7 +100,7 @@
     flex-basis: 6rem;
   }
   .filter__h2 {
-    left: 3rem;
+    left: 4rem;
     transform: translateX(0);
     font-size: 2.5rem;
   }
