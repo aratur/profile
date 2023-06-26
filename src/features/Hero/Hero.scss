@@ -48,7 +48,7 @@
 .hero__img {
   display: none;
   grid-area: heroImg;
-  max-width: 16rem;
+  max-width: 18rem;
 }
 
 @media (min-width: 1024px) {
@@ -64,7 +64,6 @@
   }
   .hero__img {
     display: block;
-    max-width: 24rem;
-    justify-self: left;
+    justify-self: center;
   }
 }
