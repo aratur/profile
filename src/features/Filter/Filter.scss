@@ -3,7 +3,9 @@
   z-index: 1000;
   top: 0;
   max-width: var(--max-width);
-  padding: 0.5rem 1rem;
+  padding-inline: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
   background-color: var(--clr-bg-primary);
   margin: 0 auto;
 }
@@ -35,7 +37,7 @@
 
 .filter__summary {
   position: absolute;
-  bottom: -3rem;
+  bottom: -1.5rem;
   display: flex;
   flex-direction: row;
   background-color: var(--clr-bg-primary);
@@ -45,7 +47,7 @@
   justify-content: center;
   column-gap: 2rem;
   padding-inline: 1rem;
-  padding-block: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 @media screen and (min-width: 64rem) {
