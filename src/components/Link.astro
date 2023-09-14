@@ -1,25 +1,25 @@
 ---
 interface Props {
-    url: string,
-    text: string,
+  url: string;
+  text: string;
 }
 const { url, text } = Astro.props;
----         
+---
+
 <a class="btn-grad" href={url} target="_blank">{text}</a>
-       
-       
+
 <style>
-.btn-grad {     
-    padding-inline: .5rem;
-    padding-block: .25rem;
+  .btn-grad {
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
     background-size: 200% auto;
     display: block;
     width: max-content;
     font-weight: ;
-    border-radius: .25rem;        
-}  
-.btn-grad:hover {    
-    box-shadow: 0 0 .25rem  hsla(0, 0%, 0%, .2);  ;
-    outline: 2px solid gray;
-}
+    border-radius: 0.25rem;
+  }
+  .btn-grad:is(:hover, :focus) {
+    box-shadow: 0 0 0.25rem hsla(0, 0%, 0%, 0.2);
+    outline: 0.2rem double gray;
+  }
 </style>
