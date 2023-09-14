@@ -6,112 +6,110 @@ import Tag from '../Filter/Tag.astro';
 
 type Props = CollectionEntry<'project'>['data'];
 
-const { id, name, description, 
-    liveSite,repository, 
-    media, tags } = Astro.props;
+const { id, name, description, liveSite, repository, media, tags } =
+  Astro.props;
 ---
 
 <section class="project">
-    <Carousel id={id} media={media} className={"project__grid-are-bottom"}/>        
-    <div class={"project__description project__grid-are-top"}>
-        <h2 class="project__h2">{name}</h2>
-        <p>{description}</p>     
-        <div class="project__tags">
-            {
-                tags.map((tag) => <Tag tag={tag} />)
-            }
-        </div>
-        <div class="project__links">
-            <Link url={repository} text="Repository" />
-            <Link url={liveSite} text="Live Site" />            
-        </div>   
+  <Carousel id={id} media={media} className={'project__grid-are-bottom'} />
+  <div class={'project__description project__grid-are-top'}>
+    <h2 class="project__h2">{name}</h2>
+    <p>{description}</p>
+    <div class="project__tags">
+      {tags.map((tag) => <Tag tag={tag} />)}
     </div>
+    <div class="project__links">
+      <Link url={repository} text="Repository" />
+      <Link url={liveSite} text="Live Site" />
+    </div>
+  </div>
 </section>
 
 <style is:global>
-.project * {    
+  .project * {
     /* outline: 1px solid hsla(240, 100%, 50%, .3); */
-}
-.project{    
-    position: relative;    
+  }
+  .project {
+    position: relative;
     display: grid;
     grid-template-columns: 2rem 1fr 2rem;
-    grid-template-areas: '. top .'
-                         '. bottom .';
+    grid-template-areas:
+      '. top .'
+      '. bottom .';
     align-items: center;
-    justify-items: center;    
+    justify-items: center;
     row-gap: 0rem;
     column-gap: 0;
-}   
-@media screen and (min-width: 1024px){
-    .project{
-        grid-template-columns: 2rem 1fr 1fr 2rem;
-        grid-template-areas: '. top bottom .';  
-        column-gap: 2rem;
-    }   
-}
+  }
+  @media screen and (min-width: 64rem) {
+    .project {
+      grid-template-columns: 2rem 1fr 1fr 2rem;
+      grid-template-areas: '. top bottom .';
+      column-gap: 2rem;
+    }
+  }
 
-.project::after {
+  .project::after {
     content: '';
     position: absolute;
     left: -20%;
     border-radius: 2rem;
-    top: 9%;    
+    top: 9%;
     width: 150%;
-    height: 87%;    
+    height: 87%;
     transform: skewY(-2.5deg);
-    z-index: -100;    
-}
-@media screen and (min-width: 500px){
+    z-index: -100;
+  }
+  @media screen and (min-width: 31rem) {
     .project::after {
-        top: 7%;
+      top: 7%;
     }
-}
-@media screen and (min-width: 700px){
+  }
+  @media screen and (min-width: 43rem) {
     .project::after {
-        top: 6%;
+      top: 6%;
     }
-}
-@media screen and (min-width: 1680px){
+  }
+  @media screen and (min-width: 105rem) {
     .project::after {
-        width: 100%;
-        left: 0;
+      width: 100%;
+      left: 0;
     }
-}
+  }
 
-.project__description {
+  .project__description {
     width: min(100%, 40rem);
     display: grid;
     row-gap: 0.5rem;
     background-color: var(--clr-bg-secondary);
     border-radius: 0.5rem;
-    box-shadow: .5rem .5rem 1rem black;
+    box-shadow: 0.5rem 0.5rem 1rem black;
     color: var(--clr-font-secondary);
     padding: 1rem;
-}
+  }
 
-.project__tags {
+  .project__tags {
     display: flex;
     flex-direction: row;
     flex-grow: 0;
     flex-wrap: wrap;
-    column-gap: 1rem;    
+    column-gap: 1rem;
     row-gap: 1rem;
     user-select: none;
-}
+  }
 
-.project__links{
+  .project__links {
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
-    column-gap: .5rem;
-}
+    column-gap: 0.5rem;
+  }
 
-.project__grid-are-top {
+  .project__grid-are-top {
     grid-area: top;
-}
+  }
 
-.project__grid-are-bottom {
+  .project__grid-are-bottom {
     grid-area: bottom;
-}
+  }
 </style>

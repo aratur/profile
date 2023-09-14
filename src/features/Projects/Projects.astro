@@ -2,49 +2,57 @@
 import type { CollectionEntry } from 'astro:content';
 import Project from './Project.astro';
 interface Props {
-    projects: CollectionEntry<"project">[];
+  projects: CollectionEntry<'project'>[];
 }
 const { projects } = Astro.props;
 ---
+
 <div class="projects">
-    <h2 class="projects__h2">List of projects</h2>
-    {
-        projects.map(({ data }) => <Project {...data} />)
-    }
+  <h2 class="projects__h2">List of projects</h2>
+  {projects.map(({ data }) => <Project {...data} />)}
 </div>
 
 <style is:global>
-.projects {
+  .projects {
     position: relative;
-	display: grid;
-	row-gap: 4rem;
-	margin-inline: auto;
-	max-width: 70rem;
+    display: grid;
+    row-gap: 4rem;
+    margin-inline: auto;
+    max-width: var(--max-width);
     isolation: isolate;
     overflow: hidden;
-}
-.projects__h2 {
+  }
+  .projects__h2 {
     position: absolute;
     color: var(--clr-font-primary);
     left: 50%;
     transform: translateX(-50%);
     top: -4rem;
-    font-size: 2rem;
     white-space: nowrap;
-}
+  }
 
-@media (min-width: 1024px) {
+  @media (min-width: 64rem) {
     .projects__h2 {
-        left: 4rem;
-        transform: translateX(0);
-        font-size: 2.5rem;
+      left: 4rem;
+      transform: translateX(0);
+      font-size: 2.5rem;
     }
-}
+  }
 
-.project:nth-child(even)::after {
-	background-image: linear-gradient( 109.6deg,  rgba(9,9,121,1) 11%, rgba(144,6,161,1) 54%, rgba(0,212,255,1) 100% );
-}
-.project:nth-child(odd)::after {
-	background-image: linear-gradient( 298.6deg,  rgba(9,9,121,1) 0%, rgba(144,6,161,1) 25%, rgba(0,212,255,1) 80% );
-}
+  .project:nth-child(even)::after {
+    background-image: linear-gradient(
+      109.6deg,
+      rgba(9, 9, 121, 1) 11%,
+      rgba(144, 6, 161, 1) 54%,
+      rgba(0, 212, 255, 1) 100%
+    );
+  }
+  .project:nth-child(odd)::after {
+    background-image: linear-gradient(
+      298.6deg,
+      rgba(9, 9, 121, 1) 0%,
+      rgba(144, 6, 161, 1) 25%,
+      rgba(0, 212, 255, 1) 80%
+    );
+  }
 </style>

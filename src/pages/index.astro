@@ -6,74 +6,79 @@ import Hero from '../features/Hero/Hero.astro';
 import Projects from '../features/Projects/Projects.astro';
 import Filter from '../features/Filter/Filter.astro';
 import { getCollection } from 'astro:content';
-import '../sass/base/css_reset.scss';
+import '../sass/reset/css_reset.scss';
 import Theme from '../features/Theme/Theme.astro';
 
-const projects = (await getCollection('project')).sort((item1, item2) => item1.data.id - item2.data.id );
+const projects = (await getCollection('project')).sort(
+  (item1, item2) => item1.data.id - item2.data.id
+);
 const tags = projects.map((project) => project.data.tags);
 const uniqueTags = tags.flat().reduce<string[]>((reducer, current) => {
-	if(reducer.includes(current)) {
-		return reducer;
-	} else {
-		reducer.push(current);
-		return reducer;
-	}}, []);
+  if (reducer.includes(current)) {
+    return reducer;
+  } else {
+    reducer.push(current);
+    return reducer;
+  }
+}, []);
 ---
+
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>		
-		<Theme />
-		<main>
-			<Hero />
-			<Filter tags={tags} uniqueTags={uniqueTags} noOfProjects={projects.length} />
-			<Projects projects={projects} />
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Theme />
+    <main>
+      <Hero />
+      <Filter
+        tags={tags}
+        uniqueTags={uniqueTags}
+        noOfProjects={projects.length}
+      />
+      <Projects projects={projects} />
+    </main>
+    <Footer />
+  </body><style is:global>
+    :root {
+      --font-primary: 'League Spartan', sans-serif;
+      --font-headers: 'Russo One', sans-serif;
+      --max-width: 70rem;
+      background-color: var(--clr-bg-primary);
+    }
+
+    main {
+      font-family: var(--font-primary);
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    main {
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      row-gap: 7rem;
+    }
+
+    h1,
+    h2 {
+      font-family: var(--font-headers);
+      line-height: 1.2;
+      font-weight: 400;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+
+    @media screen and (min-width: 64rem) {
+      main {
+        font-size: 1.1rem;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  </style>
 </html>
-
-<style is:global>
-html {	
-	font-family: 'League Spartan', sans-serif;
-	font-weight: 500;
-	font-size: 1rem;
-	line-height: 1.5;
-	background-color: var(--clr-bg-primary);
-}
-
-h1, h2 {	
-	 font-family: 'Russo One', sans-serif;;
-	font-style: normal;
-	font-weight: 400;	
-}
-h1 {
-	font-size: 2rem;
-}
-h2 { 
-	font-size: 1.5rem;
-}
-
-@media screen and (min-width: 1024px) {
-	html {
-		font-size: 1.25rem;
-	}
-	h1 {
-		font-size: 3rem;		
-	}
-	h2 {
-		font-size: 2rem;
-	}
-}
-
-main {
-    padding-top: 1rem;	
-	display: flex;
-	flex-direction: column;
-	row-gap: 8rem;
-	/* overflow: hidden; */
-}
-
-</style>

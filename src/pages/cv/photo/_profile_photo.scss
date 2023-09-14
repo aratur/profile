@@ -16,7 +16,7 @@
   );
   aspect-ratio: 1 / 1;
   box-shadow: 0 0 2rem var(--clr-dark-blue);
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 22rem) {
     margin-inline: 0;
   }
 }

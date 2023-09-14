@@ -2,8 +2,8 @@
   position: sticky;
   z-index: 1000;
   top: 0;
-  max-width: 70rem;
-  padding: 1rem 1rem 0 1rem;
+  max-width: var(--max-width);
+  padding: 0.5rem 1rem;
   background-color: var(--clr-bg-primary);
   margin: 0 auto;
 }
@@ -18,7 +18,6 @@
 }
 
 .filter__container .tag {
-  flex-basis: auto;
   flex-grow: 1;
   text-align: center;
   user-select: none;
@@ -36,7 +35,7 @@
 
 .filter__summary {
   position: absolute;
-  bottom: -3.1rem;
+  bottom: -3rem;
   display: flex;
   flex-direction: row;
   background-color: var(--clr-bg-primary);
@@ -49,7 +48,7 @@
   padding-block: 0.5rem;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 64rem) {
   .filter__summary {
     justify-content: start;
     padding-left: 3rem;
@@ -81,9 +80,6 @@
   outline: 1px solid var(--clr-font-secondary);
 }
 
-.filter__container {
-  transition: 300ms ease-in-out;
-}
 .hide {
   height: 0;
   transform: scaleY(0);
@@ -93,7 +89,7 @@
   display: none;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 64rem) {
   .filter {
     padding-inline: 4rem;
   }

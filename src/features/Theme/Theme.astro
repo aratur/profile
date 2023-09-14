@@ -1,83 +1,97 @@
 ---
-
 ---
-<header class='theme'>
-    <button type="button" class="theme__button">
-        <span class="theme__rectangle" />
-        <span class="theme__circle" />
-    </button>
+
+<header class="theme">
+  <button type="button" class="theme__button">
+    <span class="theme__rectangle"></span>
+    <span class="theme__circle"></span>
+  </button>
 </header>
 
 <script>
-    const themeButton = document.querySelector('.theme__button');
-    const root = document.querySelector(":root");
-    themeButton?.addEventListener('click', () => {
-        const theme = document.querySelector('.theme');
-        theme?.classList.toggle('theme--switch');
-        root?.classList.toggle('light');
-        
-    })
+  const themeButton = document.querySelector('.theme__button');
+  const root = document.querySelector(':root');
+  themeButton?.addEventListener('click', () => {
+    const theme = document.querySelector('.theme__button');
+    theme?.classList.toggle('theme--switch');
+    root?.classList.toggle('light');
+  });
 </script>
 
 <style is:global>
-
-:root {
+  :root {
     --clr-bg-primary: black;
     --clr-font-primary: white;
-	--clr-bg-secondary: white;
-	--clr-font-secondary: black;
-    
-}
+    --clr-bg-secondary: white;
+    --clr-font-secondary: black;
+    --theme-filter: invert(100%) sepia(93%) saturate(2%) hue-rotate(335deg)
+      brightness(108%) contrast(100%);
+    --theme-filter-inverted: filter: invert(0%) sepia(100%) saturate(32%) hue-rotate(158deg)
+      brightness(94%) contrast(106%); 
+  }
 
-.light {
+  .theme {
+    height: 2rem;
+    margin: 0 auto;
+    max-width: var(--max-width);
+  }
+
+  .light {
     --clr-bg-primary: white;
     --clr-font-primary: black;
-	--clr-bg-secondary: black;
-	--clr-font-secondary: white;
-}
+    --clr-bg-secondary: black;
+    --clr-font-secondary: white;
+    --theme-filter-inverted: var(--theme-filter);
+  }
 
-.theme {
+  .theme__button {
     margin: 1rem;
-    position: relative;           
+    position: relative;
     width: 3rem;
     height: 3rem;
-}
+  }
 
-/* rectangle */
-.theme::after {
+  @media (max-width: 64rem) {
+    .theme {
+        height: 3rem;
+    }
+  }
+
+  /* rectangle */
+  .theme__button::after {
     position: absolute;
     content: '';
     width: 100%;
     height: 50%;
     top: 50%;
-    left:0;
+    left: 0;
     transform: translateY(-50%);
     border-radius: 1rem;
     border: 6px solid var(--clr-font-primary);
     z-index: 100;
-}
+  }
 
-/* circle */
-.theme::before {
+  /* circle */
+  .theme__button::before {
     position: absolute;
     content: '';
     width: 70%;
     height: 70%;
     top: 50%;
-    left:0;
+    left: 0;
     transform: translateY(-50%);
     background-color: var(--clr-font-primary);
     border: 6px solid var(--clr-bg-primary);
     border-radius: 50%;
     z-index: 200;
     transition: 500ms;
-}
+  }
 
-.theme--switch::before {
+  .theme--switch::before {
     transform: translateX(50%) translateY(-50%);
-}
+  }
 
-.theme__button {
+  .theme__button {
     background: none;
     border: none;
     position: absolute;
@@ -85,6 +99,5 @@
     height: 3rem;
     cursor: pointer;
     z-index: 300;
-}
+  }
 </style>
-  

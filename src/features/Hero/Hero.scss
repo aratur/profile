@@ -4,14 +4,16 @@
   max-width: 70rem;
   position: relative;
   display: grid;
-  grid-template-columns: 1rem 1fr 1rem;
-  grid-template-areas: '. description .';
+  grid-template-columns: 1rem 1fr 1fr 1rem;
+  grid-template-areas: '. description description .';
   row-gap: 1rem;
   align-items: center;
   justify-content: center;
   justify-items: center;
   color: var(--clr-font-primary);
+  color: var(--clr-font-secondary);
   margin-inline: auto;
+  // border-radius: 1rem;
 }
 
 .hero__h1 {
@@ -25,25 +27,15 @@
   z-index: -1;
   inset: 0;
   width: 100%;
-  background-image: linear-gradient(
-    43deg,
-    #4158d0 0%,
-    #c850c0 46%,
-    #ffcc70 100%
-  );
-  background-image: linear-gradient(
-    223deg,
-    #4158d0 0%,
-    #c850c0 46%,
-    #ffcc70 100%
-  );
+  // background-image: linear-gradient(43deg, #445299 0%, #ffcc70 100%);
+  background-color: var(--clr-bg-secondary);
   transform: skewY(-2.5deg);
+  // border-radius: 1rem;
 }
 
 .hero__description {
   grid-area: description;
   height: min-content;
-  max-width: 24rem;
 }
 .hero__img {
   display: none;
@@ -51,7 +43,7 @@
   max-width: 18rem;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
   .hero {
     grid-template-columns: 2rem 1fr 1fr 2rem;
     grid-template-areas: '. description heroImg .';

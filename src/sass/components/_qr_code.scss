@@ -4,13 +4,13 @@
   align-items: flex-start;
   row-gap: 1rem;
   img {
-    max-width: 300px;
+    max-width: 19rem;
   }
-  @media screen and (max-width: 950px) {
+  @media screen and (max-width: 60rem) {
     row-gap: 0;
     align-items: center;
     img {
-      max-width: 250px;
+      max-width: 16rem;
     }
   }
 }

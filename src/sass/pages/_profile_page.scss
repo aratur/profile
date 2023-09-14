@@ -115,7 +115,7 @@ table th {
   grid-area: profile-summary;
 }
 
-@media screen and (min-width: 951px) {
+@media screen and (min-width: 60.001rem) {
   .profile__footer {
     margin-top: 2rem;
     margin-left: 400px;
@@ -125,7 +125,7 @@ table th {
   }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 60.001rem) {
   /* shift page elements into new slots */
   .profile__cv_grid {
     grid-template:
@@ -164,7 +164,7 @@ table th {
 /*
     for smaller screens
   */
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 22rem) {
   .profile__body {
     min-width: 320px;
     overflow: auto;

@@ -24,7 +24,7 @@
   transform: scaleX(0);
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 60rem) {
   .frontend::after {
     --clr-frontend-background: white;
   }

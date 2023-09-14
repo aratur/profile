@@ -19,7 +19,7 @@ media:
   ]
 liveSite: 'https://frontend-mentor-landing-page-nine.vercel.app/'
 repository: 'https://github.com/aratur/frontend-mentor-landing-page'
-tags: ['HTML', 'CSS', 'astro']
+tags: ['astro']
 ---
 
 TODO: write a dedicated description post

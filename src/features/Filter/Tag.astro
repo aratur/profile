@@ -1,59 +1,61 @@
 ---
 interface Props {
-    tag: string;
+  tag: string;
 }
 const { tag } = Astro.props;
 ---
 
-<span class="tag"><span class="tag__text">{tag}</span><svg class="close" xmlns="http://www.w3.org/2000/svg" width="17.828" height="17.828">
-    <path class=tag__path" d="m2.828 17.828 6.086-6.086L15 17.828 17.828 15l-6.086-6.086 6.086-6.086L15 0 8.914 6.086 2.828 0 0 2.828l6.085 6.086L0 15l2.828 2.828z"/></svg></span>
-
+<span class="tag">
+  <span class="tag__text">{tag}</span>
+  <span class="close">
+    <img
+      class="tag__img"
+      width="16"
+      height="16"
+      src="assets/portfolio/close.svg"
+      alt="close"
+    />
+  </span>
+</span>
 
 <style is:global>
-.tag {    
-    position: relative;
+  .tag {
     background-color: var(--clr-bg-secondary);
     color: var(--clr-font-secondary);
-    border: 2px solid grey;    
-    cursor: pointer;    
-    transition: background-color 300ms, color 300ms;    
+    border: 0.1rem solid grey;
+    cursor: pointer;
+    transition: 300ms;
     display: flex;
-    flex-direction: row;
-    flex-basis: auto;
-}
-.tag__text {
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  .tag__text {
     white-space: nowrap;
     flex-grow: 1;
-    padding-block: .25rem;
-    padding-inline: .5rem;
-	border-radius: .25rem;
-}
+    padding-block: 0.4rem 0.2rem;
+    padding-inline: 0.5rem;
+  }
 
-.tag:hover {
-    background-color: var(--clr-font-secondary);
-    color: var(--clr-bg-secondary);
-}
+  .tag:hover {
+    filter: var(--theme-filter);
+  }
 
-.close {
+  .close {
     display: none;
-    fill: var(--clr-bg-secondary);
-    background-color: var(--clr-font-secondary);
-    width: 1.5rem;
+    background-color: var(--clr-bg-primary);
     height: 100%;
     flex-grow: 0;
-    padding-top: .4rem;
-    padding-left: .2rem;
-}
+    padding-inline: 0.4rem;
+  }
 
-.tag__active .close {
-    display:block;   
-}
+  .tag__img {
+    filter: var(--theme-filter-inverted);
+  }
 
-@media screen and (min-width: 1024px) {
-    .close {
-        padding-top: .5rem;
-        padding-left: .3rem;
-}
-    }
-}
+  .tag__active .close {
+    display: flex;
+    align-items: center;
+  }
 </style>
