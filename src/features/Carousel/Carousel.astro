@@ -3,98 +3,128 @@ import { toChildArray } from 'preact';
 import Picture from './Picture.astro';
 import './carousel.scss';
 
-interface Props { 
+interface Props {
   id: number;
-  media: { png: string; webp?: string | undefined; }[];
-  className: string; 
+  media: { png: string; webp?: string | undefined }[];
+  className: string;
 }
 const { id, media, className } = Astro.props;
 ---
-<div class={"carousel " + className} data-id={id} data-state="running">  
-    {
-      media.map( ({ png, webp }, index, arr) => <div 
-      class="carousel__item carousel__item--hide carousel__item--display-none" data-id={id} >
-          <Picture slot="mobile" png={png} webp={webp || png} alt={png} />  
-        </div> )
-    }
+
+<div class={'carousel ' + className} data-id={id}>
+  {
+    media.map(({ png, webp }, index, arr) => (
+      <div
+        class="carousel__item carousel__item--hide carousel__item--display-none"
+        data-id={id}
+      >
+        <Picture slot="mobile" png={png} webp={webp || png} alt={png} />
+      </div>
+    ))
+  }
 </div>
 
 <script>
+  const CAROUSEL_CLASS = 'carousel';
+  const CAROUSEL_IS_RUNNING_CLASS = 'carousel--running';
+  const CAROUSEL_ITEM_CLASS = 'carousel__item';
+  const CAROUSEL_ITEM_HIDDEN_CLASS = 'carousel__item--hide';
+  const FADE_OUT_DURATION = 200; //ms
+  const SECOND = 1000;
 
-let intervals = new Map<string, NodeJS.Timer>();
-const wait = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
+  const getCarousels = () => document.querySelectorAll(`.${CAROUSEL_CLASS}`);
 
-interface ImageReference { id: string };
-// callback for animating flashcards
-const flashcards = (id: string): [number, (reference: ImageReference) => Promise<void>] => {
-  const items = document.querySelectorAll(`.carousel__item[data-id="${id}"]`);
-  const count = items.length;
-  const hideClassName = 'carousel__item--hide';
-  const flashFunction = async (reference: ImageReference) => {        
-        for(let item of items) {
-          const { classList } = item as HTMLImageElement;
-          if(classList.contains(hideClassName) && intervals.has(reference.id)) {
-              classList.remove(hideClassName);
-              let count = 0;
-              for(let i=0; i<27; i+=1){
-                // will lead to the item being hidden faster when cancelled
-                if (intervals.has(reference.id)) {
-                  await wait(100);
-                }
-                count += 1;
-              }
-              classList.add(hideClassName);
-              // align with the duration of the animation
-              await wait(200);
-          }
-        }
-      }
-  return [count, flashFunction];
-}
+  const getCarouselItems = (id: string) =>
+    document.querySelectorAll(`.${CAROUSEL_ITEM_CLASS}[data-id="${id}"]`);
 
-// Use intersection observer to run animation each time when
-// element comes into viewport
-const options = {
-  root: null, // defaults to viewport
-  rootMargin: '-100px 0px -100px 0px',
-  // threshold: 1.0,
-}
-const callback = (entries:  IntersectionObserverEntry[]) => {  
-  entries.forEach((entry) => {
-    const { target, isIntersecting } = entry;
-    const id: string = target?.getAttribute('data-id') || '';
-    const [count, flashFunction ] = flashcards(id);
-    const reference: ImageReference = { id };
-    if (isIntersecting) {
-      const interval = setInterval(() => flashFunction(reference), 3150 * count);      
-      intervals.set(id, interval);      
-      flashFunction(reference);
-    } else {        
-      clearInterval(intervals.get(id));   
-      intervals.delete(id);
+  // check if an element is in the viewport (this class is set by intersection observer)
+  const isRunning = (id: string) => {
+    const isRunning = document.querySelectorAll(
+      `.${CAROUSEL_IS_RUNNING_CLASS}[data-id="${id}"]`
+    );
+    return isRunning?.length > 0;
+  };
+
+  // wait for an element to come into viewport
+  const waitForIsRunning = async (id: string) => {
+    while (!isRunning(id)) {
+      await wait(1000);
     }
+  };
+
+  const wait = (delay: number) =>
+    new Promise((resolve) => setTimeout(resolve, delay));
+
+  // wait for a duration or untill condition callback resolves to false
+  const waitOnCondition = async (
+    miliseconds: number,
+    condtition: () => boolean
+  ) => {
+    const count = miliseconds / 100;
+    for (let i = 1; i <= count; i += 1) {
+      if (condtition()) {
+        await wait(100);
+      }
+    }
+  };
+
+  // callback for animating flashcards
+  const spinCarousel = async (id: string): Promise<void> => {
+    const carouselItems = getCarouselItems(id);
+    const animationDuration = 2 * SECOND;
+    // for each image in the carousel
+    for (let item of carouselItems) {
+      const { classList } = item as HTMLImageElement;
+      if (isRunning(id) && classList.contains(CAROUSEL_ITEM_HIDDEN_CLASS)) {
+        // show image
+        classList.remove(CAROUSEL_ITEM_HIDDEN_CLASS);
+        // wait for 3 seconds or stop if no longer observable
+        await waitOnCondition(animationDuration, () => isRunning(id));
+        // hide image
+        classList.add(CAROUSEL_ITEM_HIDDEN_CLASS);
+        // duration of the fade-out animation
+        await wait(FADE_OUT_DURATION);
+      }
+    }
+  };
+
+  // toggle is-running class on each carousel parent
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      const { target, isIntersecting } = entry;
+      if (isIntersecting) {
+        target?.classList.add(CAROUSEL_IS_RUNNING_CLASS);
+      } else {
+        target?.classList.remove(CAROUSEL_IS_RUNNING_CLASS);
+      }
+    });
+  };
+
+  // intersection observer to run animation only when element is in viewport
+  const options = {
+    root: null, // defaults to viewport
+    rootMargin: '-100px 0px -100px 0px',
+    // threshold: 1.0,
+  };
+  let observer = new IntersectionObserver(observerCallback, options);
+  const observe = () => {
+    const carousels = getCarousels();
+    carousels.forEach((carousel) => {
+      if (carousel) observer.observe(carousel);
+    });
+  };
+
+  // start observing on load and run carousels in an infinite loop
+  addEventListener('load', () => {
+    const carousels = getCarousels();
+    carousels.forEach(async (carousel) => {
+      const carouselId: string = carousel?.getAttribute('data-id') || '';
+      while (true) {
+        await waitForIsRunning(carouselId);
+        await spinCarousel(carouselId);
+      }
+    });
+
+    observe();
   });
-};    
-
-let observer = new IntersectionObserver(callback, options);  
-
-// after loosing visiblity and re-entering animations start to overlap
-// they one loop needs to be terminated to avoid that
-// as far as I was able to debug this issue, it is not due to Interval or IntersectionObserver events;
-// rather something to do with applying css class changes and browser repainting
-document.addEventListener("visibilitychange", () => {
-  if(document.visibilityState === "hidden") {
-    const copy = new Map(intervals.entries());
-    intervals.clear();
-    setTimeout(() => {intervals = copy;}, 200);
-  }
-})
-    
-// adds behavior for carousels
-const carousels = document.querySelectorAll('.carousel');      
- 
-carousels.forEach((carousel) => {
-  const id: string = carousel?.getAttribute('data-id') || '';
-  if (carousel) observer.observe(carousel);
-})  
 </script>
