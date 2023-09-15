@@ -1,7 +1,7 @@
 ---
 id: 6
 name: 'Multiplication'
-description: 'This an application used by kids to memorize multiplication table. Makes use of Redux Toolkit to manage global state, and a dedicated slice with internationalization methods. UI built with Bootstrap v3.'
+description: 'This an application to help kids to memorize multiplication table. Makes use of Redux Toolkit to manage the global state, and a dedicated slice with custom internationalization methods. UI built with Bootstrap v3.'
 media:
   [
     {

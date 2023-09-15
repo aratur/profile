@@ -1,7 +1,7 @@
 ---
 id: 3
 name: 'Password generator'
-description: 'Strong contrasted user interface. Generates a password based on the selected inclusion options. Customized UI components from Material UI library. For internationalization React i18next framework was used in this project.'
+description: 'Strong contrasted user interface. Generates a password based on the selected inclusion options. Based and customized on UI components from Material UI library. For internationalization React i18next framework was used in this project.'
 media: [{
     png: '/assets/portfolio/password/mobile.png',
     webp: '/assets/portfolio/password/mobile.webp'
